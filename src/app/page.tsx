@@ -1,16 +1,46 @@
 'use client';
 
 import { useState } from 'react';
-import { Search, CheckCircle, AlertTriangle, XCircle, Shield, Server, Ban, Loader2, Mail, Zap } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { Search, CheckCircle, AlertTriangle, XCircle, Shield, Server, Ban, Loader2, Mail, Zap, Wrench, ArrowRight, ExternalLink } from 'lucide-react';
 import type { DomainCheckResult } from '@/types';
+import { FixGuideCard } from '@/components/FixGuideCard';
+import type { RecordType } from '@/lib/fix-guides';
+import { getAllProviders } from '@/lib/fix-guides';
 
 export default function Home() {
+  const router = useRouter();
   const [domain, setDomain] = useState('');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<DomainCheckResult | null>(null);
   const [error, setError] = useState('');
 
   const handleCheck = async () => {
+    if (!domain.trim()) {
+      setError('Please enter a domain');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+    setResult(null);
+
+    // Extract clean domain
+    let cleanDomain = domain.trim().toLowerCase();
+    cleanDomain = cleanDomain.replace(/^https?:\/\//i, '');
+    cleanDomain = cleanDomain.split('/')[0];
+    cleanDomain = cleanDomain.split(':')[0];
+    if (cleanDomain.includes('@')) {
+      cleanDomain = cleanDomain.split('@')[1];
+    }
+
+    // Redirect to report page (SEO-friendly URL)
+    router.push(`/report/${encodeURIComponent(cleanDomain)}`);
+  };
+
+  // Legacy inline check (for preview on homepage)
+  const handleQuickCheck = async () => {
     if (!domain.trim()) {
       setError('Please enter a domain');
       return;
@@ -87,9 +117,9 @@ export default function Home() {
             <span className="text-xl font-bold text-gray-800">MailProbe</span>
           </div>
           <nav className="hidden md:flex gap-6 text-sm text-gray-600">
-            <a href="#" className="hover:text-blue-600">Home</a>
-            <a href="#" className="hover:text-blue-600">Guides</a>
-            <a href="#" className="hover:text-blue-600">Pricing</a>
+            <Link href="/" className="text-blue-600 font-medium">Home</Link>
+            <Link href="/guides" className="hover:text-blue-600">Guides</Link>
+            <Link href="/test" className="hover:text-blue-600">Email Test</Link>
           </nav>
         </div>
       </header>
@@ -194,6 +224,8 @@ export default function Home() {
                 title="SPF Record"
                 subtitle="Sender Policy Framework"
                 result={result.checks.spf}
+                domain={result.domain}
+                recordType="spf"
                 getStatusIcon={getStatusIcon}
                 getStatusBg={getStatusBg}
               />
@@ -204,6 +236,8 @@ export default function Home() {
                 title="DKIM Signature"
                 subtitle="DomainKeys Identified Mail"
                 result={result.checks.dkim}
+                domain={result.domain}
+                recordType="dkim"
                 getStatusIcon={getStatusIcon}
                 getStatusBg={getStatusBg}
                 extra={result.checks.dkim.selectors.length > 0 && (
@@ -219,6 +253,8 @@ export default function Home() {
                 title="DMARC Policy"
                 subtitle="Domain-based Message Authentication"
                 result={result.checks.dmarc}
+                domain={result.domain}
+                recordType="dmarc"
                 getStatusIcon={getStatusIcon}
                 getStatusBg={getStatusBg}
               />
@@ -229,11 +265,12 @@ export default function Home() {
                 title="MX Records"
                 subtitle="Mail Exchange Servers"
                 result={result.checks.mx}
+                domain={result.domain}
                 getStatusIcon={getStatusIcon}
                 getStatusBg={getStatusBg}
                 extra={result.checks.mx.records.length > 0 && (
                   <div className="mt-2 text-sm">
-                    {result.checks.mx.records.map((mx, i) => (
+                    {result.checks.mx.records.map((mx: any, i: number) => (
                       <p key={i} className="text-gray-600">
                         Priority {mx.priority}: {mx.host}
                       </p>
@@ -248,13 +285,14 @@ export default function Home() {
                 title="Blacklist Check"
                 subtitle={`Checked ${result.checks.blacklist.checked} blacklists`}
                 result={result.checks.blacklist}
+                domain={result.domain}
                 getStatusIcon={getStatusIcon}
                 getStatusBg={getStatusBg}
                 extra={result.checks.blacklist.listed.length > 0 && (
                   <div className="mt-2">
                     <p className="text-sm text-red-600 font-medium">Listed on:</p>
                     <ul className="text-sm text-gray-600 list-disc list-inside">
-                      {result.checks.blacklist.listed.map((bl, i) => (
+                      {result.checks.blacklist.listed.map((bl: string, i: number) => (
                         <li key={i}>{bl}</li>
                       ))}
                     </ul>
@@ -273,7 +311,7 @@ export default function Home() {
             <h2 className="text-2xl font-bold text-center text-gray-800 mb-12">
               Complete Analysis, Precise Diagnosis
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-4 gap-8">
               <FeatureCard
                 icon={<Shield className="w-8 h-8 text-blue-500" />}
                 title="Email Authentication"
@@ -289,6 +327,55 @@ export default function Home() {
                 title="Fix Suggestions"
                 description="Get specific configuration advice with step-by-step guidance"
               />
+              <FeatureCard
+                icon={<Wrench className="w-8 h-8 text-purple-500" />}
+                title="DNS Provider Guides"
+                description="Step-by-step fix guides for Cloudflare, GoDaddy, Aliyun, and more"
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* DNS Provider Guides Section */}
+      {!result && (
+        <section className="py-16 px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-2xl font-bold text-gray-800">
+                DNS Provider Setup Guides
+              </h2>
+              <Link href="/guides" className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-medium">
+                View All Guides <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+              {getAllProviders().map((provider) => (
+                <Link
+                  key={provider.id}
+                  href={`/guides/${provider.id}`}
+                  className="bg-white border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 hover:shadow-md transition-all text-center group"
+                >
+                  <h3 className="font-semibold text-gray-800 group-hover:text-blue-600 mb-1">
+                    {provider.name}
+                  </h3>
+                  <p className="text-xs text-gray-500">SPF · DKIM · DMARC</p>
+                </Link>
+              ))}
+            </div>
+            
+            {/* Quick Links */}
+            <div className="mt-8 p-6 bg-gray-50 rounded-xl">
+              <h3 className="font-semibold text-gray-700 mb-4">Popular Guides</h3>
+              <div className="flex flex-wrap gap-2">
+                <Link href="/guides/cloudflare/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">Cloudflare SPF</Link>
+                <Link href="/guides/cloudflare/dkim" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">Cloudflare DKIM</Link>
+                <Link href="/guides/cloudflare/dmarc" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">Cloudflare DMARC</Link>
+                <Link href="/guides/godaddy/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">GoDaddy SPF</Link>
+                <Link href="/guides/aliyun/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">阿里云 SPF</Link>
+                <Link href="/guides/dnspod/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">腾讯云 SPF</Link>
+                <Link href="/guides/route53/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">AWS Route 53 SPF</Link>
+              </div>
             </div>
           </div>
         </section>
@@ -304,12 +391,14 @@ export default function Home() {
   );
 }
 
-// Check Result Card Component
+// Check Result Card Component - 增加修复指南
 function CheckCard({
   icon,
   title,
   subtitle,
   result,
+  domain,
+  recordType,
   getStatusIcon,
   getStatusBg,
   extra,
@@ -318,6 +407,8 @@ function CheckCard({
   title: string;
   subtitle: string;
   result: any;
+  domain: string;
+  recordType?: RecordType;
   getStatusIcon: (status: string) => React.ReactNode;
   getStatusBg: (status: string) => string;
   extra?: React.ReactNode;
@@ -372,6 +463,16 @@ function CheckCard({
             ))}
           </ul>
         </div>
+      )}
+
+      {/* 修复指南 - 仅对 SPF/DKIM/DMARC 且状态非 pass 显示 */}
+      {recordType && result.status !== 'pass' && (
+        <FixGuideCard
+          domain={domain}
+          recordType={recordType}
+          status={result.status}
+          currentRecord={result.record}
+        />
       )}
     </div>
   );
