@@ -180,11 +180,17 @@ export default function TestResultPage({ params }: PageProps) {
               <h1 className="text-2xl font-bold text-gray-800 mb-4">
                 Waiting for Your Email
               </h1>
-              <p className="text-gray-600 mb-6">
-                Send an email to:
-              </p>
-              <div className="p-4 bg-gray-100 rounded-xl font-mono text-lg text-gray-800 mb-6 break-all">
-                {result.email}
+              
+              <div className="text-left mb-6">
+                <p className="text-gray-600 mb-2 font-medium">1. Send an email to:</p>
+                <div className="p-4 bg-gray-100 rounded-xl font-mono text-lg text-gray-800 break-all mb-4">
+                  t@test.mailprobe.xyz
+                </div>
+                
+                <p className="text-gray-600 mb-2 font-medium">2. Use this subject line:</p>
+                <div className="p-4 bg-yellow-50 border-2 border-yellow-300 rounded-xl font-mono text-lg text-gray-800">
+                  TEST-{result.id}
+                </div>
               </div>
               
               <div className="flex items-center justify-center gap-2 text-blue-600 mb-6">
