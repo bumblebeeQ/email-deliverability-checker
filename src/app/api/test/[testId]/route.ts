@@ -15,7 +15,11 @@ export async function GET(
   try {
     const supabase = createServerClient();
     let test: EmailTest | null = null;
-    let debugInfo: any = { supabaseCreated: !!supabase };
+    let debugInfo: any = { 
+      supabaseCreated: !!supabase,
+      testIdReceived: testId,
+      paramsRaw: JSON.stringify(params),
+    };
 
     // 尝试从Supabase获取
     if (supabase) {
