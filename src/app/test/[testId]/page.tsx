@@ -277,7 +277,7 @@ export default function TestResultPage({ params }: PageProps) {
               <div className="text-left mb-6">
                 <p className="text-gray-600 mb-2 font-medium">1. Send an email to:</p>
                 <div className="p-4 bg-gray-100 rounded-xl font-mono text-lg text-gray-800 break-all mb-4">
-                  t@test.EmailDiag.xyz
+                  t@emaildiag.com
                 </div>
                 
                 <p className="text-gray-600 mb-2 font-medium">2. Use this subject line:</p>
