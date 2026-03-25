@@ -28,6 +28,8 @@ export async function GET(
       debugInfo.queryError = error?.message;
       debugInfo.dataFound = !!data;
       debugInfo.dataStatus = data?.status;
+      debugInfo.dataReceivedAt = data?.received_at;
+      debugInfo.rawData = data; // 临时：查看完整数据
 
       if (!error && data) {
         test = data as EmailTest;
