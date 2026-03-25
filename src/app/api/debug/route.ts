@@ -12,50 +12,44 @@ export async function GET() {
     hasServiceKey: !!supabaseServiceKey,
     urlPrefix: supabaseUrl?.substring(0, 30),
     keyPrefix: supabaseServiceKey?.substring(0, 20),
+    nodeEnv: process.env.NODE_ENV,
+    vercelEnv: process.env.VERCEL_ENV,
   };
 
+  // 方法1: 用 supabase 客户端
   const supabase = createServerClient();
+  let clientResult: any = null;
   
-  if (!supabase) {
-    return NextResponse.json({
-      success: false,
-      error: 'Supabase client is null',
-      debug,
-    });
-  }
-
-  try {
-    // Test specific record
-    const { data: specific, error: specificError } = await supabase
+  if (supabase) {
+    const { data, error } = await supabase
       .from('email_tests')
-      .select('*')
+      .select('id, status, received_at')
       .eq('id', 'bOWNoczy')
       .single();
-
-    // Test general query
-    const { data: all, error: allError } = await supabase
-      .from('email_tests')
-      .select('id, status')
-      .order('created_at', { ascending: false })
-      .limit(5);
-
-    return NextResponse.json({
-      success: true,
-      specific: {
-        data: specific,
-        error: specificError?.message,
-      },
-      all: {
-        data: all,
-        error: allError?.message,
-      },
-      debug,
-    });
-  } catch (e: any) {
-    return NextResponse.json({
-      success: false,
-      error: e.message,
-      debug,
-    });
+    clientResult = { data, error: error?.message };
   }
+
+  // 方法2: 用 fetch 直接调用 REST API
+  let fetchResult: any = null;
+  try {
+    const res = await fetch(
+      `${supabaseUrl}/rest/v1/email_tests?id=eq.bOWNoczy&select=id,status,received_at`,
+      {
+        headers: {
+          'apikey': supabaseServiceKey!,
+          'Authorization': `Bearer ${supabaseServiceKey}`,
+        },
+      }
+    );
+    fetchResult = await res.json();
+  } catch (e: any) {
+    fetchResult = { error: e.message };
+  }
+
+  return NextResponse.json({
+    success: true,
+    clientResult,
+    fetchResult,
+    debug,
+  });
 }
