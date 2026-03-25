@@ -120,6 +120,7 @@ export default function Home() {
             <Link href="/" className="text-blue-600 font-medium">Home</Link>
             <Link href="/guides" className="hover:text-blue-600">Guides</Link>
             <Link href="/test" className="hover:text-blue-600">Email Test</Link>
+            <Link href="/faq" className="hover:text-blue-600">FAQ</Link>
           </nav>
         </div>
       </header>
