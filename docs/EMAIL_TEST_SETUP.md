@@ -15,13 +15,13 @@
 ```
 用户发送邮件
     ↓
-test-xxx@test.mailprobe.xyz
+test-xxx@test.EmailDiag.xyz
     ↓
 Cloudflare Email Routing
     ↓
 Email Worker (解析邮件)
     ↓
-调用 MailProbe API (存储结果)
+调用 EmailDiag API (存储结果)
     ↓
 用户页面轮询获取结果
 ```
@@ -33,8 +33,8 @@ Email Worker (解析邮件)
 ### Step 1: 添加测试子域名到Cloudflare
 
 1. 登录 Cloudflare Dashboard
-2. 选择 mailprobe.xyz 域名
-3. 确保 `test.mailprobe.xyz` 子域名已配置
+2. 选择 EmailDiag.xyz 域名
+3. 确保 `test.EmailDiag.xyz` 子域名已配置
 
 ### Step 2: 启用 Email Routing
 
@@ -46,22 +46,22 @@ Email Worker (解析邮件)
 
 1. 进入 **Workers & Pages**
 2. 点击 **Create Worker**
-3. 命名为 `mailprobe-email-receiver`
+3. 命名为 `EmailDiag-email-receiver`
 4. 粘贴下面的Worker代码
 
 ### Step 4: 配置 Email Route
 
 1. 回到 **Email** > **Email Routing** > **Routing rules**
 2. 添加规则：
-   - Custom address: `test-*@test.mailprobe.xyz`
+   - Custom address: `test-*@test.EmailDiag.xyz`
    - Action: Send to Worker
-   - Worker: `mailprobe-email-receiver`
+   - Worker: `EmailDiag-email-receiver`
 
 ### Step 5: 配置环境变量
 
 在Worker设置中添加：
-- `MAILPROBE_API_URL`: `https://mailprobe.xyz/api/test/receive`
-- `MAILPROBE_API_SECRET`: 生成一个随机密钥
+- `EmailDiag_API_URL`: `https://EmailDiag.xyz/api/test/receive`
+- `EmailDiag_API_SECRET`: 生成一个随机密钥
 
 ---
 

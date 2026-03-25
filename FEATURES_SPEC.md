@@ -1,4 +1,4 @@
-# MailProbe 新功能技术方案
+# EmailDiag 新功能技术方案
 
 ## 功能1：公开检测结果页
 
@@ -83,7 +83,7 @@ CREATE INDEX idx_domain_reports_checked_at ON domain_reports(checked_at DESC);
 ```
 1. 用户点击"开始测试"
 2. 系统生成唯一测试ID和测试邮箱地址
-   例如: test-abc123@test.mailprobe.xyz
+   例如: test-abc123@test.EmailDiag.xyz
 3. 用户发送邮件到该地址
 4. Webhook接收邮件，解析headers
 5. 用户访问 /test/abc123 查看结果
@@ -151,7 +151,7 @@ SUPABASE_SERVICE_ROLE_KEY=
 
 # 邮件测试（Phase 2）
 MAILGUN_API_KEY=
-MAILGUN_DOMAIN=test.mailprobe.xyz
+MAILGUN_DOMAIN=test.EmailDiag.xyz
 # 或
 CLOUDMAILIN_SECRET=
 ```

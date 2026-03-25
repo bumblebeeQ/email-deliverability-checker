@@ -69,7 +69,7 @@ export default function EmailTestPage() {
                   <Zap className="w-3 h-3 text-yellow-300 absolute -top-1 -right-1" />
                 </div>
               </div>
-              <span className="text-xl font-bold text-gray-800">MailProbe</span>
+              <span className="text-xl font-bold text-gray-800">EmailDiag</span>
             </Link>
           </div>
           <nav className="hidden md:flex gap-6 text-sm text-gray-600">
@@ -274,7 +274,7 @@ export default function EmailTestPage() {
       {/* Footer */}
       <footer className="py-8 px-4 border-t bg-gray-50">
         <div className="max-w-5xl mx-auto text-center text-gray-500 text-sm">
-          <p>© 2026 MailProbe. Free email deliverability checker.</p>
+          <p>© 2026 EmailDiag. Free email deliverability checker.</p>
         </div>
       </footer>
     </main>

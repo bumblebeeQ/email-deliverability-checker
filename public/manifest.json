@@ -1,6 +1,6 @@
 {
-  "name": "MailProbe",
-  "short_name": "MailProbe",
+  "name": "EmailDiag",
+  "short_name": "EmailDiag",
   "description": "Free email deliverability checker",
   "start_url": "/",
   "display": "standalone",

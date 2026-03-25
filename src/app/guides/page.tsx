@@ -4,7 +4,7 @@ import { Shield, Mail, Zap, ArrowRight, CheckCircle } from 'lucide-react';
 import { getAllProviders } from '@/lib/fix-guides';
 
 export const metadata: Metadata = {
-  title: 'Email Authentication Guides - SPF, DKIM, DMARC Setup | MailProbe',
+  title: 'Email Authentication Guides - SPF, DKIM, DMARC Setup | EmailDiag',
   description: 'Step-by-step guides to configure SPF, DKIM, and DMARC for Cloudflare, GoDaddy, Aliyun, DNSPod, and AWS Route 53. Fix email deliverability issues.',
   keywords: 'SPF setup, DKIM configuration, DMARC guide, email authentication, DNS setup, Cloudflare SPF, GoDaddy DKIM',
 };
@@ -49,7 +49,7 @@ export default function GuidesPage() {
                 <Zap className="w-3 h-3 text-yellow-300 absolute -top-1 -right-1" />
               </div>
             </div>
-            <span className="text-xl font-bold text-gray-800">MailProbe</span>
+            <span className="text-xl font-bold text-gray-800">EmailDiag</span>
           </Link>
           <nav className="hidden md:flex gap-6 text-sm text-gray-600">
             <Link href="/" className="hover:text-blue-600">Home</Link>
@@ -211,7 +211,7 @@ export default function GuidesPage() {
       {/* Footer */}
       <footer className="py-8 px-4 border-t bg-gray-50">
         <div className="max-w-5xl mx-auto text-center text-gray-500 text-sm">
-          <p>© 2026 MailProbe. Free email deliverability checker.</p>
+          <p>© 2026 EmailDiag. Free email deliverability checker.</p>
         </div>
       </footer>
     </main>

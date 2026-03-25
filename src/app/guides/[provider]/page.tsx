@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!provider) return { title: 'Not Found' };
 
   return {
-    title: `${provider.name} Email Authentication Guide - SPF, DKIM, DMARC Setup | MailProbe`,
+    title: `${provider.name} Email Authentication Guide - SPF, DKIM, DMARC Setup | EmailDiag`,
     description: `Complete guide to configure SPF, DKIM, and DMARC records in ${provider.name}. Step-by-step instructions with examples and common mistakes to avoid.`,
     keywords: `${provider.name} SPF, ${provider.name} DKIM, ${provider.name} DMARC, ${provider.name} email setup, ${provider.name} DNS TXT record`,
   };
@@ -57,7 +57,7 @@ export default function ProviderGuidePage({ params }: PageProps) {
                 <Zap className="w-3 h-3 text-yellow-300 absolute -top-1 -right-1" />
               </div>
             </div>
-            <span className="text-xl font-bold text-gray-800">MailProbe</span>
+            <span className="text-xl font-bold text-gray-800">EmailDiag</span>
           </Link>
           <nav className="hidden md:flex gap-6 text-sm text-gray-600">
             <Link href="/" className="hover:text-blue-600">Home</Link>
@@ -211,7 +211,7 @@ export default function ProviderGuidePage({ params }: PageProps) {
       {/* Footer */}
       <footer className="py-8 px-4 border-t bg-gray-50">
         <div className="max-w-5xl mx-auto text-center text-gray-500 text-sm">
-          <p>© 2026 MailProbe. Free email deliverability checker.</p>
+          <p>© 2026 EmailDiag. Free email deliverability checker.</p>
         </div>
       </footer>
     </main>

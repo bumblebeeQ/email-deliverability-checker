@@ -242,7 +242,7 @@ export default function TestResultPage({ params }: PageProps) {
                   <Zap className="w-3 h-3 text-yellow-300 absolute -top-1 -right-1" />
                 </div>
               </div>
-              <span className="text-xl font-bold text-gray-800">MailProbe</span>
+              <span className="text-xl font-bold text-gray-800">EmailDiag</span>
             </Link>
           </div>
           <nav className="hidden md:flex gap-6 text-sm text-gray-600">
@@ -277,7 +277,7 @@ export default function TestResultPage({ params }: PageProps) {
               <div className="text-left mb-6">
                 <p className="text-gray-600 mb-2 font-medium">1. Send an email to:</p>
                 <div className="p-4 bg-gray-100 rounded-xl font-mono text-lg text-gray-800 break-all mb-4">
-                  t@test.mailprobe.xyz
+                  t@test.EmailDiag.xyz
                 </div>
                 
                 <p className="text-gray-600 mb-2 font-medium">2. Use this subject line:</p>
@@ -644,7 +644,7 @@ export default function TestResultPage({ params }: PageProps) {
       {/* Footer */}
       <footer className="py-8 px-4 border-t bg-gray-50 mt-8">
         <div className="max-w-5xl mx-auto text-center text-gray-500 text-sm">
-          <p>© 2026 MailProbe. Free email deliverability checker.</p>
+          <p>© 2026 EmailDiag. Free email deliverability checker.</p>
         </div>
       </footer>
     </main>

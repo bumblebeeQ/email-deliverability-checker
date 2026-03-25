@@ -3,16 +3,16 @@ import Link from 'next/link';
 import { Mail, Zap, ChevronDown, ArrowLeft } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Email Deliverability FAQ - Common Questions Answered | MailProbe',
+  title: 'Email Deliverability FAQ - Common Questions Answered | EmailDiag',
   description: 'Get answers to frequently asked questions about email deliverability, SPF, DKIM, DMARC configuration, blacklist issues, and how to fix emails going to spam.',
   keywords: 'email deliverability FAQ, SPF FAQ, DKIM FAQ, DMARC FAQ, email spam FAQ, why emails go to spam, email authentication questions',
   openGraph: {
     title: 'Email Deliverability FAQ - Common Questions Answered',
     description: 'Get answers to frequently asked questions about email deliverability, SPF, DKIM, DMARC configuration.',
-    url: 'https://mailprobe.xyz/faq',
+    url: 'https://EmailDiag.xyz/faq',
   },
   alternates: {
-    canonical: 'https://mailprobe.xyz/faq',
+    canonical: 'https://EmailDiag.xyz/faq',
   },
 };
 
@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     question: 'How do I check if my domain is on a blacklist?',
-    answer: `Use our free email deliverability checker at MailProbe to scan your domain against 50+ major blacklists including Spamhaus, SpamCop, and Barracuda. If you're listed, we'll show you which blacklists and provide guidance on how to get delisted.`,
+    answer: `Use our free email deliverability checker at EmailDiag to scan your domain against 50+ major blacklists including Spamhaus, SpamCop, and Barracuda. If you're listed, we'll show you which blacklists and provide guidance on how to get delisted.`,
   },
   {
     question: 'How long does it take for DNS changes to propagate?',
@@ -59,7 +59,7 @@ const faqs = [
   },
   {
     question: 'How can I test if my email configuration is correct?',
-    answer: `Use our Email Test feature at MailProbe. We provide a unique test email address - send an email to it and we'll analyze your SPF, DKIM, and DMARC authentication in real-time, showing you exactly what receiving mail servers see.`,
+    answer: `Use our Email Test feature at EmailDiag. We provide a unique test email address - send an email to it and we'll analyze your SPF, DKIM, and DMARC authentication in real-time, showing you exactly what receiving mail servers see.`,
   },
   {
     question: 'Why is email authentication important for marketing emails?',
@@ -103,7 +103,7 @@ export default function FAQPage() {
                     <Zap className="w-3 h-3 text-yellow-300 absolute -top-1 -right-1" />
                   </div>
                 </div>
-                <span className="text-xl font-bold text-gray-800">MailProbe</span>
+                <span className="text-xl font-bold text-gray-800">EmailDiag</span>
               </Link>
             </div>
             <nav className="hidden md:flex gap-6 text-sm text-gray-600">
@@ -179,7 +179,7 @@ export default function FAQPage() {
         {/* Footer */}
         <footer className="py-8 px-4 border-t bg-gray-50">
           <div className="max-w-5xl mx-auto text-center text-gray-500 text-sm">
-            <p>© 2026 MailProbe. Free email deliverability checker.</p>
+            <p>© 2026 EmailDiag. Free email deliverability checker.</p>
           </div>
         </footer>
       </main>

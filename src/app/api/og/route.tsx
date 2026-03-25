@@ -54,7 +54,7 @@ export async function GET(request: NextRequest) {
             <span style={{ fontSize: 32, color: 'white' }}>✉️</span>
           </div>
           <span style={{ fontSize: 36, fontWeight: 700, color: '#1e293b' }}>
-            MailProbe
+            EmailDiag
           </span>
         </div>
 
@@ -147,7 +147,7 @@ export async function GET(request: NextRequest) {
             color: '#94a3b8',
           }}
         >
-          mailprobe.xyz • Free Email Deliverability Checker
+          EmailDiag.xyz • Free Email Deliverability Checker
         </div>
       </div>
     ),

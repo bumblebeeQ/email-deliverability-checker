@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://mailprobe.xyz';
+  const baseUrl = 'https://EmailDiag.xyz';
   
   return {
     rules: [

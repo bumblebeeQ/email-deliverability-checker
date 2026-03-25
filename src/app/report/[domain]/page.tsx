@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const domain = decodeURIComponent(params.domain);
   
   if (!isValidDomain(extractDomain(domain))) {
-    return { title: 'Invalid Domain - MailProbe' };
+    return { title: 'Invalid Domain - EmailDiag' };
   }
 
   const result = await checkDomain(extractDomain(domain));
@@ -38,10 +38,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       type: 'website',
-      url: `https://mailprobe.xyz/report/${domain}`,
-      siteName: 'MailProbe',
+      url: `https://EmailDiag.xyz/report/${domain}`,
+      siteName: 'EmailDiag',
       images: [{
-        url: `https://mailprobe.xyz/api/og?domain=${domain}&score=${result.score}&grade=${result.grade}`,
+        url: `https://EmailDiag.xyz/api/og?domain=${domain}&score=${result.score}&grade=${result.grade}`,
         width: 1200,
         height: 630,
         alt: `${domain} Email Score: ${result.grade}`,
@@ -51,10 +51,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title,
       description,
-      images: [`https://mailprobe.xyz/api/og?domain=${domain}&score=${result.score}&grade=${result.grade}`],
+      images: [`https://EmailDiag.xyz/api/og?domain=${domain}&score=${result.score}&grade=${result.grade}`],
     },
     alternates: {
-      canonical: `https://mailprobe.xyz/report/${domain}`,
+      canonical: `https://EmailDiag.xyz/report/${domain}`,
     },
     robots: {
       index: true,
@@ -73,17 +73,17 @@ function generateJsonLd(result: DomainCheckResult) {
     datePublished: result.checkedAt,
     author: {
       '@type': 'Organization',
-      name: 'MailProbe',
-      url: 'https://mailprobe.xyz',
+      name: 'EmailDiag',
+      url: 'https://EmailDiag.xyz',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'MailProbe',
-      url: 'https://mailprobe.xyz',
+      name: 'EmailDiag',
+      url: 'https://EmailDiag.xyz',
     },
     mainEntity: {
       '@type': 'WebApplication',
-      name: 'MailProbe Email Deliverability Checker',
+      name: 'EmailDiag Email Deliverability Checker',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web',
     },
@@ -129,7 +129,7 @@ export default async function ReportPage({ params }: PageProps) {
     }
   };
 
-  const reportUrl = `https://mailprobe.xyz/report/${domain}`;
+  const reportUrl = `https://EmailDiag.xyz/report/${domain}`;
 
   return (
     <>
@@ -152,7 +152,7 @@ export default async function ReportPage({ params }: PageProps) {
                     <Zap className="w-3 h-3 text-yellow-300 absolute -top-1 -right-1" />
                   </div>
                 </div>
-                <span className="text-xl font-bold text-gray-800">MailProbe</span>
+                <span className="text-xl font-bold text-gray-800">EmailDiag</span>
               </Link>
             </div>
             <nav className="hidden md:flex gap-6 text-sm text-gray-600">
@@ -346,7 +346,7 @@ export default async function ReportPage({ params }: PageProps) {
         {/* Footer */}
         <footer className="py-8 px-4 border-t bg-gray-50 mt-8">
           <div className="max-w-5xl mx-auto text-center text-gray-500 text-sm">
-            <p>© 2026 MailProbe. Free email deliverability checker.</p>
+            <p>© 2026 EmailDiag. Free email deliverability checker.</p>
             <p className="mt-2">
               <Link href="/" className="hover:text-blue-600">Check Another Domain</Link>
             </p>

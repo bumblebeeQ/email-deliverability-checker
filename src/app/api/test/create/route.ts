@@ -12,7 +12,7 @@ export async function POST() {
     // 生成唯一测试ID
     const testId = nanoid(8);
     // 使用固定邮箱地址，测试ID通过主题传递
-    const testEmail = `t@test.mailprobe.xyz`;
+    const testEmail = `t@test.EmailDiag.xyz`;
     
     const now = new Date();
     const expiresAt = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24小时

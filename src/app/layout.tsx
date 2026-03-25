@@ -1,34 +1,34 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const BASE_URL = 'https://mailprobe.xyz';
+const BASE_URL = 'https://EmailDiag.xyz';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "MailProbe - Email Deliverability Checker",
-    template: "%s | MailProbe",
+    default: "EmailDiag - Email Deliverability Checker",
+    template: "%s | EmailDiag",
   },
   description: "Free email deliverability test. Check SPF, DKIM, DMARC configuration, scan blacklists, and get actionable fix suggestions with step-by-step DNS guides.",
   keywords: ["email deliverability", "SPF check", "DKIM check", "DMARC check", "email spam", "blacklist check", "DNS setup", "email authentication"],
-  authors: [{ name: "MailProbe" }],
-  creator: "MailProbe",
-  publisher: "MailProbe",
+  authors: [{ name: "EmailDiag" }],
+  creator: "EmailDiag",
+  publisher: "EmailDiag",
   
   // Open Graph - 社交分享
   openGraph: {
     type: "website",
     locale: "en_US",
     url: BASE_URL,
-    siteName: "MailProbe",
-    title: "MailProbe - Email Deliverability Checker",
+    siteName: "EmailDiag",
+    title: "EmailDiag - Email Deliverability Checker",
     description: "Free email deliverability test. Check SPF, DKIM, DMARC configuration, scan blacklists, and get actionable fix suggestions.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "MailProbe - Email Deliverability Checker",
+        alt: "EmailDiag - Email Deliverability Checker",
       },
     ],
   },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "MailProbe - Email Deliverability Checker",
+    title: "EmailDiag - Email Deliverability Checker",
     description: "Free email deliverability test. Check SPF, DKIM, DMARC and get fix suggestions.",
     images: ["/og-image.png"],
   },
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  name: "MailProbe",
+  name: "EmailDiag",
   description: "Free email deliverability checker. Test SPF, DKIM, DMARC configuration and get fix suggestions.",
   url: BASE_URL,
   applicationCategory: "UtilityApplication",

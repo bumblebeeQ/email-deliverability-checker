@@ -13,7 +13,7 @@ interface ShareButtonsProps {
 export function ShareButtons({ url, domain, score, grade }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
-  const shareText = `Check out ${domain}'s email deliverability score: ${score}/100 (Grade ${grade}) via @MailProbe`;
+  const shareText = `Check out ${domain}'s email deliverability score: ${score}/100 (Grade ${grade}) via @EmailDiag`;
 
   const handleCopy = async () => {
     try {

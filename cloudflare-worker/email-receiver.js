@@ -1,5 +1,5 @@
 /**
- * Cloudflare Email Worker - MailProbe Email Receiver
+ * Cloudflare Email Worker - EmailDiag Email Receiver
  * 测试ID从邮件主题中提取，格式: TEST-{testId}
  */
 
