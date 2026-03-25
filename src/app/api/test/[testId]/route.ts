@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerClient, type EmailTest } from '@/lib/supabase';
+import { type EmailTest } from '@/lib/supabase';
 
 export const runtime = 'nodejs';
-
-// 内存存储（与create路由共享概念，但由于serverless每个实例独立，实际需要数据库）
-const memoryStore = new Map<string, EmailTest>();
 
 export async function GET(
   request: NextRequest,
@@ -13,71 +10,61 @@ export async function GET(
   const { testId } = params;
 
   try {
-    const supabase = createServerClient();
-    let test: EmailTest | null = null;
-    let debugInfo: any = { 
-      supabaseCreated: !!supabase,
-      testIdReceived: testId,
-      paramsRaw: JSON.stringify(params),
-    };
-
-    // 尝试从Supabase获取
-    if (supabase) {
-      const { data, error } = await supabase
-        .from('email_tests')
-        .select('*')
-        .eq('id', testId)
-        .single();
-
-      debugInfo.queryError = error?.message;
-      debugInfo.dataFound = !!data;
-      debugInfo.dataStatus = data?.status;
-      debugInfo.dataReceivedAt = data?.received_at;
-      debugInfo.rawData = data; // 临时：查看完整数据
-
-      if (!error && data) {
-        test = data as EmailTest;
-      }
-    }
-
-    // 从内存获取（fallback）
-    if (!test) {
-      test = memoryStore.get(testId) || null;
-      debugInfo.fromMemory = !!test;
-    }
-
-    // 如果找不到，创建演示测试
-    if (!test) {
-      debugInfo.createdDemo = true;
-      const now = new Date();
-      test = {
-        id: testId,
-        email: `test-${testId}@test.mailprobe.xyz`,
-        status: 'pending',
-        created_at: new Date(now.getTime() - 5000).toISOString(),
-        expires_at: new Date(now.getTime() + 24 * 60 * 60 * 1000).toISOString(),
-      };
-      memoryStore.set(testId, test);
-    }
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
     
-    // 添加debug信息到响应（临时）
-    console.log('Debug info:', JSON.stringify(debugInfo));
+    let test: EmailTest | null = null;
+    let debugInfo: any = { testIdReceived: testId };
+
+    // 直接用 fetch 查询（避免 supabase 客户端的潜在问题）
+    if (supabaseUrl && supabaseServiceKey) {
+      const res = await fetch(
+        `${supabaseUrl}/rest/v1/email_tests?id=eq.${testId}&select=*`,
+        {
+          headers: {
+            'apikey': supabaseServiceKey,
+            'Authorization': `Bearer ${supabaseServiceKey}`,
+          },
+          cache: 'no-store',
+        }
+      );
+      const rows = await res.json();
+      debugInfo.fetchRows = rows?.length;
+      
+      if (Array.isArray(rows) && rows.length > 0) {
+        test = rows[0] as EmailTest;
+        debugInfo.fetchStatus = test.status;
+      }
+    } else {
+      debugInfo.error = 'Missing Supabase config';
+    }
+
+    // 如果找不到记录
+    if (!test) {
+      return NextResponse.json({
+        success: false,
+        error: 'Test not found',
+        _debug: debugInfo,
+      }, { status: 404 });
+    }
 
     // 检查是否过期
     if (test.status === 'pending' && new Date(test.expires_at) < new Date()) {
       test.status = 'expired';
-      
       // 更新数据库
-      if (supabase) {
-        await supabase
-          .from('email_tests')
-          .update({ status: 'expired' })
-          .eq('id', testId);
-      }
-      memoryStore.set(testId, test);
+      await fetch(
+        `${supabaseUrl}/rest/v1/email_tests?id=eq.${testId}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'apikey': supabaseServiceKey!,
+            'Authorization': `Bearer ${supabaseServiceKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ status: 'expired' }),
+        }
+      );
     }
-
-    // 模拟模式已禁用，只等待真实邮件
 
     // 构建响应
     const result = {
@@ -108,7 +95,7 @@ export async function GET(
     return NextResponse.json({
       success: true,
       result,
-      _debug: debugInfo, // 临时调试
+      _debug: debugInfo,
     });
 
   } catch (error: any) {
