@@ -15,6 +15,7 @@ export async function GET(
   try {
     const supabase = createServerClient();
     let test: EmailTest | null = null;
+    let debugInfo: any = { supabaseCreated: !!supabase };
 
     // 尝试从Supabase获取
     if (supabase) {
@@ -24,6 +25,10 @@ export async function GET(
         .eq('id', testId)
         .single();
 
+      debugInfo.queryError = error?.message;
+      debugInfo.dataFound = !!data;
+      debugInfo.dataStatus = data?.status;
+
       if (!error && data) {
         test = data as EmailTest;
       }
@@ -32,10 +37,12 @@ export async function GET(
     // 从内存获取（fallback）
     if (!test) {
       test = memoryStore.get(testId) || null;
+      debugInfo.fromMemory = !!test;
     }
 
     // 如果找不到，创建演示测试
     if (!test) {
+      debugInfo.createdDemo = true;
       const now = new Date();
       test = {
         id: testId,
@@ -46,6 +53,9 @@ export async function GET(
       };
       memoryStore.set(testId, test);
     }
+    
+    // 添加debug信息到响应（临时）
+    console.log('Debug info:', JSON.stringify(debugInfo));
 
     // 检查是否过期
     if (test.status === 'pending' && new Date(test.expires_at) < new Date()) {
@@ -92,6 +102,7 @@ export async function GET(
     return NextResponse.json({
       success: true,
       result,
+      _debug: debugInfo, // 临时调试
     });
 
   } catch (error: any) {
