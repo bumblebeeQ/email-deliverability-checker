@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const BASE_URL = 'https://EmailDiag.xyz';
+const BASE_URL = 'https://emaildiag.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

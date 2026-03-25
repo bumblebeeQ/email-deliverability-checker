@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getAllProviders } from '@/lib/fix-guides';
 
-const BASE_URL = 'https://EmailDiag.xyz';
+const BASE_URL = 'https://emaildiag.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const providers = getAllProviders();
