@@ -25,15 +25,30 @@ export async function GET() {
   }
 
   try {
-    const { data, error } = await supabase
+    // Test specific record
+    const { data: specific, error: specificError } = await supabase
+      .from('email_tests')
+      .select('*')
+      .eq('id', 'bOWNoczy')
+      .single();
+
+    // Test general query
+    const { data: all, error: allError } = await supabase
       .from('email_tests')
       .select('id, status')
-      .limit(3);
+      .order('created_at', { ascending: false })
+      .limit(5);
 
     return NextResponse.json({
-      success: !error,
-      data,
-      error: error?.message,
+      success: true,
+      specific: {
+        data: specific,
+        error: specificError?.message,
+      },
+      all: {
+        data: all,
+        error: allError?.message,
+      },
       debug,
     });
   } catch (e: any) {
