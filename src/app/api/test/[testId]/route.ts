@@ -95,7 +95,6 @@ export async function GET(
     return NextResponse.json({
       success: true,
       result,
-      _debug: debugInfo,
     });
 
   } catch (error: any) {
