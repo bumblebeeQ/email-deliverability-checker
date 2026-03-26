@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Search, CheckCircle, AlertTriangle, XCircle, Shield, Server, Ban, Loader2, Mail, Zap, Wrench, ArrowRight, ExternalLink } from 'lucide-react';
+import { Search, CheckCircle, AlertTriangle, XCircle, Shield, Server, Ban, Loader2, Mail, Zap, Wrench, ArrowRight, ExternalLink, Send, Globe } from 'lucide-react';
 import type { DomainCheckResult } from '@/types';
 import { FixGuideCard } from '@/components/FixGuideCard';
 import type { RecordType } from '@/lib/fix-guides';
@@ -39,38 +39,6 @@ export default function Home() {
     router.push(`/report/${encodeURIComponent(cleanDomain)}`);
   };
 
-  // Legacy inline check (for preview on homepage)
-  const handleQuickCheck = async () => {
-    if (!domain.trim()) {
-      setError('Please enter a domain');
-      return;
-    }
-
-    setLoading(true);
-    setError('');
-    setResult(null);
-
-    try {
-      const response = await fetch('/api/check', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ domain: domain.trim() }),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setResult(data.data);
-      } else {
-        setError(data.error || 'Check failed');
-      }
-    } catch (err) {
-      setError('Network error, please try again');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const getGradeColor = (grade: string) => {
     switch (grade) {
       case 'A': return 'text-green-500 bg-green-50';
@@ -103,72 +71,183 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Header */}
-      <header className="py-6 px-4 border-b bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+      <header className="py-4 px-4 border-b bg-white/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            {/* Logo */}
-            <div className="relative w-10 h-10">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl rotate-3"></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center">
-                <Mail className="w-5 h-5 text-white" />
-                <Zap className="w-3 h-3 text-yellow-300 absolute -top-1 -right-1" />
+          <Link href="/" className="flex items-center gap-2">
+            <div className="relative w-9 h-9">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg rotate-3"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
+                <Mail className="w-4 h-4 text-white" />
+                <Zap className="w-2.5 h-2.5 text-yellow-300 absolute -top-0.5 -right-0.5" />
               </div>
             </div>
-            <span className="text-xl font-bold text-gray-800">EmailDiag</span>
-          </div>
+            <span className="text-lg font-bold text-gray-800">EmailDiag</span>
+          </Link>
           <nav className="hidden md:flex gap-6 text-sm text-gray-600">
             <Link href="/" className="text-blue-600 font-medium">Home</Link>
-            <Link href="/guides" className="hover:text-blue-600">Guides</Link>
-            <Link href="/test" className="hover:text-blue-600">Email Test</Link>
-            <Link href="/faq" className="hover:text-blue-600">FAQ</Link>
+            <Link href="/guides" className="hover:text-blue-600 transition-colors">Guides</Link>
+            <Link href="/test" className="hover:text-blue-600 transition-colors">Email Test</Link>
+            <Link href="/faq" className="hover:text-blue-600 transition-colors">FAQ</Link>
           </nav>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="py-16 px-4">
+      <section className="py-12 md:py-16 px-4">
         <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-4">
+            <Zap className="w-4 h-4" />
+            100% Free · No Registration Required
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Email Deliverability Checker
           </h1>
           <p className="text-lg text-gray-600 mb-8">
-            Check your SPF, DKIM, DMARC configuration, scan blacklists, and get actionable fix suggestions
+            The friendliest free tool to diagnose why your emails land in spam
           </p>
 
-          {/* Search Box */}
-          <div className="flex gap-2 max-w-xl mx-auto">
-            <div className="relative flex-1">
-              <input
-                type="text"
-                placeholder="Enter domain, e.g. example.com"
-                value={domain}
-                onChange={(e) => setDomain(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleCheck()}
-                className="w-full px-4 py-3 pl-12 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+          {/* Domain Check Box */}
+          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <div className="flex gap-2 max-w-xl mx-auto">
+              <div className="relative flex-1">
+                <input
+                  type="text"
+                  placeholder="Enter domain, e.g. example.com"
+                  value={domain}
+                  onChange={(e) => setDomain(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleCheck()}
+                  className="w-full px-4 py-3 pl-12 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              </div>
+              <button
+                onClick={handleCheck}
+                disabled={loading}
+                className="px-6 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-colors"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Checking
+                  </>
+                ) : (
+                  'Check Now'
+                )}
+              </button>
             </div>
-            <button
-              onClick={handleCheck}
-              disabled={loading}
-              className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-            >
-              {loading ? (
-                <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                  Checking
-                </>
-              ) : (
-                'Check Now'
-              )}
-            </button>
+            {error && (
+              <p className="mt-3 text-red-500 text-sm">{error}</p>
+            )}
+            
+            {/* Example Report Link */}
+            <div className="mt-4 pt-4 border-t border-gray-100">
+              <Link 
+                href="/report/gmail.com" 
+                className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors"
+              >
+                <ExternalLink className="w-4 h-4" />
+                See example report for gmail.com
+              </Link>
+            </div>
           </div>
-
-          {error && (
-            <p className="mt-4 text-red-500">{error}</p>
-          )}
         </div>
       </section>
+
+      {/* Two Tools Section */}
+      {!result && (
+        <section className="py-12 px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-center text-gray-800 mb-3">
+              Two Ways to Check Your Email Setup
+            </h2>
+            <p className="text-center text-gray-500 mb-8">
+              Choose the right tool for your needs
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Domain Check Card */}
+              <div className="bg-white rounded-2xl shadow-lg p-6 border-2 border-transparent hover:border-blue-200 transition-all">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 bg-blue-100 rounded-xl">
+                    <Globe className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800">Domain Check</h3>
+                    <p className="text-sm text-gray-500">Instant DNS analysis</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Check SPF, DKIM, DMARC, MX records, and blacklist status for any domain. No email required.
+                </p>
+                <ul className="text-sm text-gray-500 space-y-2 mb-6">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Instant results
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Check any domain
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Blacklist scanning
+                  </li>
+                </ul>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => document.querySelector('input')?.focus()}
+                    className="flex-1 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors text-center"
+                  >
+                    Check Domain
+                  </button>
+                  <Link 
+                    href="/report/gmail.com"
+                    className="py-2.5 px-4 border border-gray-300 text-gray-600 font-medium rounded-lg hover:border-blue-400 hover:text-blue-600 transition-colors"
+                  >
+                    Example
+                  </Link>
+                </div>
+              </div>
+
+              {/* Email Test Card */}
+              <div className="bg-white rounded-2xl shadow-lg p-6 border-2 border-transparent hover:border-green-200 transition-all">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 bg-green-100 rounded-xl">
+                    <Send className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800">Email Test</h3>
+                    <p className="text-sm text-gray-500">Real email analysis</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Send a test email and see exactly how receiving servers evaluate your authentication and spam score.
+                </p>
+                <ul className="text-sm text-gray-500 space-y-2 mb-6">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Real authentication check
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Spam score analysis
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Header inspection
+                  </li>
+                </ul>
+                <Link 
+                  href="/test"
+                  className="block w-full py-2.5 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors text-center"
+                >
+                  Start Email Test
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Results */}
       {result && (
@@ -307,31 +386,34 @@ export default function Home() {
 
       {/* Features (show when no result) */}
       {!result && (
-        <section className="py-16 px-4 bg-white">
+        <section className="py-12 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl font-bold text-center text-gray-800 mb-12">
+            <h2 className="text-2xl font-bold text-center text-gray-800 mb-3">
               Complete Analysis, Precise Diagnosis
             </h2>
-            <div className="grid md:grid-cols-4 gap-8">
+            <p className="text-center text-gray-500 mb-10">
+              Everything you need to fix email deliverability issues
+            </p>
+            <div className="grid md:grid-cols-4 gap-6">
               <FeatureCard
-                icon={<Shield className="w-8 h-8 text-blue-500" />}
+                icon={<Shield className="w-7 h-7 text-blue-500" />}
                 title="Email Authentication"
                 description="Check SPF, DKIM, DMARC configuration to ensure emails aren't forged"
               />
               <FeatureCard
-                icon={<Ban className="w-8 h-8 text-red-500" />}
+                icon={<Ban className="w-7 h-7 text-red-500" />}
                 title="Blacklist Scanning"
                 description="Scan 50+ major blacklists to detect IP reputation issues"
               />
               <FeatureCard
-                icon={<CheckCircle className="w-8 h-8 text-green-500" />}
+                icon={<CheckCircle className="w-7 h-7 text-green-500" />}
                 title="Fix Suggestions"
                 description="Get specific configuration advice with step-by-step guidance"
               />
               <FeatureCard
-                icon={<Wrench className="w-8 h-8 text-purple-500" />}
+                icon={<Wrench className="w-7 h-7 text-purple-500" />}
                 title="DNS Provider Guides"
-                description="Step-by-step fix guides for Cloudflare, GoDaddy, Aliyun, and more"
+                description="Step-by-step guides for Cloudflare, GoDaddy, AWS, and more"
               />
             </div>
           </div>
@@ -340,7 +422,7 @@ export default function Home() {
 
       {/* DNS Provider Guides Section */}
       {!result && (
-        <section className="py-16 px-4">
+        <section className="py-12 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-bold text-gray-800">
@@ -369,13 +451,12 @@ export default function Home() {
             <div className="mt-8 p-6 bg-gray-50 rounded-xl">
               <h3 className="font-semibold text-gray-700 mb-4">Popular Guides</h3>
               <div className="flex flex-wrap gap-2">
-                <Link href="/guides/cloudflare/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">Cloudflare SPF</Link>
-                <Link href="/guides/cloudflare/dkim" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">Cloudflare DKIM</Link>
-                <Link href="/guides/cloudflare/dmarc" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">Cloudflare DMARC</Link>
-                <Link href="/guides/godaddy/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">GoDaddy SPF</Link>
-                <Link href="/guides/aliyun/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">Alibaba Cloud SPF</Link>
-                <Link href="/guides/dnspod/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">Tencent Cloud SPF</Link>
-                <Link href="/guides/route53/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">AWS Route 53 SPF</Link>
+                <Link href="/guides/cloudflare/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors">Cloudflare SPF</Link>
+                <Link href="/guides/cloudflare/dkim" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors">Cloudflare DKIM</Link>
+                <Link href="/guides/cloudflare/dmarc" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors">Cloudflare DMARC</Link>
+                <Link href="/guides/godaddy/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors">GoDaddy SPF</Link>
+                <Link href="/guides/aliyun/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors">Alibaba Cloud SPF</Link>
+                <Link href="/guides/route53/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors">AWS Route 53 SPF</Link>
               </div>
             </div>
           </div>
@@ -386,13 +467,30 @@ export default function Home() {
       <footer className="py-8 px-4 border-t bg-gray-50">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm">© 2026 EmailDiag. The friendliest free email deliverability tool.</p>
-            <div className="flex gap-6 text-sm text-gray-500">
-              <Link href="/about" className="hover:text-blue-600">About</Link>
-              <Link href="/privacy" className="hover:text-blue-600">Privacy</Link>
-              <Link href="/terms" className="hover:text-blue-600">Terms</Link>
-              <a href="mailto:hello@emaildiag.com" className="hover:text-blue-600">Contact</a>
+            <div className="flex items-center gap-4">
+              <Link href="/" className="flex items-center gap-2">
+                <div className="relative w-7 h-7">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700 rounded-md rotate-3"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 rounded-md flex items-center justify-center">
+                    <Mail className="w-3 h-3 text-white" />
+                  </div>
+                </div>
+                <span className="text-sm font-semibold text-gray-600">EmailDiag</span>
+              </Link>
+              <span className="text-gray-300">|</span>
+              <p className="text-gray-400 text-sm">The friendliest free email deliverability tool</p>
             </div>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
+              <Link href="/about" className="hover:text-blue-600 transition-colors">About</Link>
+              <Link href="/privacy" className="hover:text-blue-600 transition-colors">Privacy</Link>
+              <Link href="/terms" className="hover:text-blue-600 transition-colors">Terms</Link>
+              <a href="mailto:hello@emaildiag.com" className="hover:text-blue-600 transition-colors">
+                hello@emaildiag.com
+              </a>
+            </div>
+          </div>
+          <div className="mt-6 pt-6 border-t border-gray-200 text-center text-xs text-gray-400">
+            © 2026 EmailDiag. All rights reserved.
           </div>
         </div>
       </footer>
@@ -400,7 +498,7 @@ export default function Home() {
   );
 }
 
-// Check Result Card Component - 增加修复指南
+// Check Result Card Component
 function CheckCard({
   icon,
   title,
@@ -474,7 +572,7 @@ function CheckCard({
         </div>
       )}
 
-      {/* 修复指南 - 仅对 SPF/DKIM/DMARC 且状态非 pass 显示 */}
+      {/* Fix Guide - only for SPF/DKIM/DMARC and non-pass status */}
       {recordType && result.status !== 'pass' && (
         <FixGuideCard
           domain={domain}
@@ -499,9 +597,9 @@ function FeatureCard({
 }) {
   return (
     <div className="text-center p-6">
-      <div className="inline-flex p-4 bg-gray-100 rounded-2xl mb-4">{icon}</div>
-      <h3 className="text-lg font-semibold text-gray-800 mb-2">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+      <div className="inline-flex p-3 bg-gray-100 rounded-2xl mb-4">{icon}</div>
+      <h3 className="text-base font-semibold text-gray-800 mb-2">{title}</h3>
+      <p className="text-sm text-gray-600">{description}</p>
     </div>
   );
 }

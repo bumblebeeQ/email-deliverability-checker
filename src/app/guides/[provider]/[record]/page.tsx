@@ -75,7 +75,8 @@ export default function RecordGuidePage({ params }: PageProps) {
           <nav className="hidden md:flex gap-6 text-sm text-gray-600">
             <Link href="/" className="hover:text-blue-600">Home</Link>
             <Link href="/guides" className="text-blue-600 font-medium">Guides</Link>
-            <Link href="#" className="hover:text-blue-600">Pricing</Link>
+            <Link href="/test" className="hover:text-blue-600">Email Test</Link>
+            <Link href="/faq" className="hover:text-blue-600">FAQ</Link>
           </nav>
         </div>
       </header>
