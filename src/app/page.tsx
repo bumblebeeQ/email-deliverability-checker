@@ -373,8 +373,8 @@ export default function Home() {
                 <Link href="/guides/cloudflare/dkim" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">Cloudflare DKIM</Link>
                 <Link href="/guides/cloudflare/dmarc" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">Cloudflare DMARC</Link>
                 <Link href="/guides/godaddy/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">GoDaddy SPF</Link>
-                <Link href="/guides/aliyun/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">阿里云 SPF</Link>
-                <Link href="/guides/dnspod/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">腾讯云 SPF</Link>
+                <Link href="/guides/aliyun/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">Alibaba Cloud SPF</Link>
+                <Link href="/guides/dnspod/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">Tencent Cloud SPF</Link>
                 <Link href="/guides/route53/spf" className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600">AWS Route 53 SPF</Link>
               </div>
             </div>
@@ -384,8 +384,16 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-8 px-4 border-t bg-gray-50">
-        <div className="max-w-5xl mx-auto text-center text-gray-500 text-sm">
-          <p>© 2026 EmailDiag. Free email deliverability checker.</p>
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-400 text-sm">© 2026 EmailDiag. The friendliest free email deliverability tool.</p>
+            <div className="flex gap-6 text-sm text-gray-500">
+              <Link href="/about" className="hover:text-blue-600">About</Link>
+              <Link href="/privacy" className="hover:text-blue-600">Privacy</Link>
+              <Link href="/terms" className="hover:text-blue-600">Terms</Link>
+              <a href="mailto:hello@emaildiag.com" className="hover:text-blue-600">Contact</a>
+            </div>
+          </div>
         </div>
       </footer>
     </main>

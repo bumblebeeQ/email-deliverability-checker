@@ -43,15 +43,15 @@ export function FixGuideCard({ domain, recordType, status, currentRecord }: FixG
         className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
       >
         {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-        查看修复指南
+        View Fix Guide
       </button>
 
       {isExpanded && (
         <div className="mt-4 space-y-4">
-          {/* DNS 提供商选择 */}
+          {/* DNS Provider Selection */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              选择你的 DNS 提供商
+              Select your DNS provider
             </label>
             <div className="flex flex-wrap gap-2">
               {providers.map((provider) => (
@@ -70,13 +70,13 @@ export function FixGuideCard({ domain, recordType, status, currentRecord }: FixG
             </div>
           </div>
 
-          {/* 修复指南内容 */}
+          {/* Fix Guide Content */}
           {guide && (
             <div className="bg-gray-50 rounded-xl p-6 space-y-6">
-              {/* 标题 */}
+              {/* Title */}
               <div className="flex items-center justify-between">
                 <h4 className="text-lg font-semibold text-gray-800">
-                  {guide.providerName} - {guide.recordTypeName} 配置指南
+                  {guide.providerName} - {guide.recordTypeName} Setup Guide
                 </h4>
                 <a
                   href={providers.find(p => p.id === selectedProvider)?.url}
@@ -84,17 +84,17 @@ export function FixGuideCard({ domain, recordType, status, currentRecord }: FixG
                   rel="noopener noreferrer"
                   className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700"
                 >
-                  打开控制台 <ExternalLink className="w-4 h-4" />
+                  Open Console <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
 
-              {/* 前置条件 */}
+              {/* Prerequisites */}
               {guide.prerequisites && guide.prerequisites.length > 0 && (
                 <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                   <div className="flex items-start gap-2">
                     <AlertCircle className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-medium text-yellow-800">前置条件</p>
+                      <p className="font-medium text-yellow-800">Prerequisites</p>
                       <ul className="mt-1 text-sm text-yellow-700 list-disc list-inside">
                         {guide.prerequisites.map((req, i) => (
                           <li key={i}>{req}</li>
@@ -105,7 +105,7 @@ export function FixGuideCard({ domain, recordType, status, currentRecord }: FixG
                 </div>
               )}
 
-              {/* 分步指南 */}
+              {/* Step-by-step Guide */}
               <div className="space-y-4">
                 {guide.steps.map((step) => (
                   <div key={step.step} className="flex gap-4">
@@ -126,21 +126,21 @@ export function FixGuideCard({ domain, recordType, status, currentRecord }: FixG
                 ))}
               </div>
 
-              {/* 推荐值 */}
+              {/* Suggested Value */}
               <div className="bg-white border rounded-lg p-4">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-gray-700">推荐配置值</span>
+                  <span className="text-sm font-medium text-gray-700">Suggested Value</span>
                   <button
                     onClick={() => handleCopy(suggestedValue, 'suggested')}
                     className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700"
                   >
                     {copiedValue === 'suggested' ? (
                       <>
-                        <Check className="w-4 h-4" /> 已复制
+                        <Check className="w-4 h-4" /> Copied
                       </>
                     ) : (
                       <>
-                        <Copy className="w-4 h-4" /> 复制
+                        <Copy className="w-4 h-4" /> Copy
                       </>
                     )}
                   </button>
@@ -149,25 +149,25 @@ export function FixGuideCard({ domain, recordType, status, currentRecord }: FixG
                   {suggestedValue}
                 </code>
                 <p className="mt-2 text-xs text-gray-500">
-                  * 请根据你的实际邮件服务商调整 include 内容
+                  * Adjust the include statements based on your actual email service provider
                 </p>
               </div>
 
-              {/* 示例值 */}
+              {/* Example Value */}
               <div className="bg-white border rounded-lg p-4">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-gray-700">完整示例</span>
+                  <span className="text-sm font-medium text-gray-700">Full Example</span>
                   <button
                     onClick={() => handleCopy(guide.exampleValue, 'example')}
                     className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700"
                   >
                     {copiedValue === 'example' ? (
                       <>
-                        <Check className="w-4 h-4" /> 已复制
+                        <Check className="w-4 h-4" /> Copied
                       </>
                     ) : (
                       <>
-                        <Copy className="w-4 h-4" /> 复制
+                        <Copy className="w-4 h-4" /> Copy
                       </>
                     )}
                   </button>
@@ -177,12 +177,12 @@ export function FixGuideCard({ domain, recordType, status, currentRecord }: FixG
                 </code>
               </div>
 
-              {/* 验证命令 */}
+              {/* Verify Command */}
               {guide.verifyCommand && (
                 <div className="bg-gray-900 rounded-lg p-4">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium text-gray-300 flex items-center gap-2">
-                      <Terminal className="w-4 h-4" /> 验证命令
+                      <Terminal className="w-4 h-4" /> Verify Command
                     </span>
                     <button
                       onClick={() => handleCopy(guide.verifyCommand!.replace('yourdomain.com', domain), 'verify')}
@@ -190,11 +190,11 @@ export function FixGuideCard({ domain, recordType, status, currentRecord }: FixG
                     >
                       {copiedValue === 'verify' ? (
                         <>
-                          <Check className="w-4 h-4" /> 已复制
+                          <Check className="w-4 h-4" /> Copied
                         </>
                       ) : (
                         <>
-                          <Copy className="w-4 h-4" /> 复制
+                          <Copy className="w-4 h-4" /> Copy
                         </>
                       )}
                     </button>
@@ -205,10 +205,10 @@ export function FixGuideCard({ domain, recordType, status, currentRecord }: FixG
                 </div>
               )}
 
-              {/* 常见错误 */}
+              {/* Common Mistakes */}
               {guide.commonMistakes && guide.commonMistakes.length > 0 && (
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                  <p className="font-medium text-red-800 mb-2">⚠️ 常见错误</p>
+                  <p className="font-medium text-red-800 mb-2">⚠️ Common Mistakes</p>
                   <ul className="text-sm text-red-700 list-disc list-inside space-y-1">
                     {guide.commonMistakes.map((mistake, i) => (
                       <li key={i}>{mistake}</li>
@@ -219,10 +219,10 @@ export function FixGuideCard({ domain, recordType, status, currentRecord }: FixG
             </div>
           )}
 
-          {/* 未选择提供商时的提示 */}
+          {/* Prompt when no provider selected */}
           {!selectedProvider && (
             <div className="text-center py-8 text-gray-500">
-              👆 请先选择你的 DNS 提供商以查看具体配置步骤
+              👆 Please select your DNS provider above to see specific setup instructions
             </div>
           )}
         </div>
@@ -231,7 +231,7 @@ export function FixGuideCard({ domain, recordType, status, currentRecord }: FixG
   );
 }
 
-// 简化版：仅显示提供商选择器
+// Simplified version: Provider selector only
 export function DNSProviderSelector({ 
   value, 
   onChange 
@@ -247,7 +247,7 @@ export function DNSProviderSelector({
       onChange={(e) => onChange(e.target.value as DNSProvider)}
       className="block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
     >
-      <option value="">选择 DNS 提供商...</option>
+      <option value="">Select DNS provider...</option>
       {providers.map((provider) => (
         <option key={provider.id} value={provider.id}>
           {provider.name}

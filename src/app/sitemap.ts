@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const providers = getAllProviders();
   const recordTypes = ['spf', 'dkim', 'dmarc'];
   
-  // 静态页面
+  // Static pages
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
@@ -34,9 +34,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${BASE_URL}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${BASE_URL}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${BASE_URL}/terms`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
   ];
 
-  // DNS 提供商页面
+  // DNS provider pages
   const providerPages: MetadataRoute.Sitemap = providers.map((provider) => ({
     url: `${BASE_URL}/guides/${provider.id}`,
     lastModified: new Date(),
@@ -44,7 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // 具体指南页面 (provider + record)
+  // Guide pages (provider + record type)
   const guidePages: MetadataRoute.Sitemap = [];
   for (const provider of providers) {
     for (const record of recordTypes) {
