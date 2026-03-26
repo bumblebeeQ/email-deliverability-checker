@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Mail, Zap, Send, ArrowRight, Copy, Check, Clock, Shield, AlertTriangle, Info } from 'lucide-react';
+import { Navbar } from '@/components/Navbar';
 
 // Note: metadata needs to be in a separate file for client components
 // Create test/layout.tsx or use generateMetadata in a server component wrapper
@@ -61,27 +62,7 @@ export default function EmailTestPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Header */}
-      <header className="py-6 px-4 border-b bg-white/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="relative w-10 h-10">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl rotate-3"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-white" />
-                  <Zap className="w-3 h-3 text-yellow-300 absolute -top-1 -right-1" />
-                </div>
-              </div>
-              <span className="text-xl font-bold text-gray-800">EmailDiag</span>
-            </Link>
-          </div>
-          <nav className="hidden md:flex gap-6 text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600">Home</Link>
-            <Link href="/guides" className="hover:text-blue-600">Guides</Link>
-            <Link href="/test" className="text-blue-600 font-medium">Email Test</Link>
-          </nav>
-        </div>
-      </header>
+      <Navbar active="test" />
 
       {/* Main Content */}
       <section className="py-16 px-4">

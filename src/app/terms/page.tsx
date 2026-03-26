@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Mail, Zap } from 'lucide-react';
+import { Navbar } from '@/components/Navbar';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
@@ -11,26 +11,7 @@ export default function TermsPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Header */}
-      <header className="py-4 px-4 border-b bg-white/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-9 h-9">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg rotate-3"></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
-                <Mail className="w-4 h-4 text-white" />
-                <Zap className="w-2.5 h-2.5 text-yellow-300 absolute -top-0.5 -right-0.5" />
-              </div>
-            </div>
-            <span className="text-lg font-bold text-gray-800">EmailDiag</span>
-          </Link>
-          <nav className="hidden md:flex gap-6 text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
-            <Link href="/guides" className="hover:text-blue-600 transition-colors">Guides</Link>
-            <Link href="/test" className="hover:text-blue-600 transition-colors">Email Test</Link>
-            <Link href="/faq" className="hover:text-blue-600 transition-colors">FAQ</Link>
-          </nav>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Content */}
       <section className="py-12 px-4">
