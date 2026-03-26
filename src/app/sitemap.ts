@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
 import { getAllProviders } from '@/lib/fix-guides';
 
-const BASE_URL = 'https://emaildiag.com';
+// 统一使用 www 版本
+const BASE_URL = 'https://www.emaildiag.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const providers = getAllProviders();

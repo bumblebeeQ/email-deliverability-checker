@@ -5,6 +5,9 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Mail, Zap, Send, ArrowRight, Copy, Check, Clock, Shield, AlertTriangle, Info } from 'lucide-react';
 
+// Note: metadata needs to be in a separate file for client components
+// Create test/layout.tsx or use generateMetadata in a server component wrapper
+
 export default function EmailTestPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);

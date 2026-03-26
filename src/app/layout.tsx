@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const BASE_URL = 'https://emaildiag.com';
+// 统一使用 www 版本作为主域名
+const BASE_URL = 'https://www.emaildiag.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "EmailDiag - Email Deliverability Checker",
+    default: "EmailDiag - Free Email Deliverability Checker",
     template: "%s | EmailDiag",
   },
   description: "Free email deliverability test. Check SPF, DKIM, DMARC configuration, scan blacklists, and get actionable fix suggestions with step-by-step DNS guides.",
@@ -15,17 +16,17 @@ export const metadata: Metadata = {
   creator: "EmailDiag",
   publisher: "EmailDiag",
   
-  // Open Graph - 社交分享
+  // Open Graph
   openGraph: {
     type: "website",
     locale: "en_US",
     url: BASE_URL,
     siteName: "EmailDiag",
-    title: "EmailDiag - Email Deliverability Checker",
+    title: "EmailDiag - Free Email Deliverability Checker",
     description: "Free email deliverability test. Check SPF, DKIM, DMARC configuration, scan blacklists, and get actionable fix suggestions.",
     images: [
       {
-        url: "/og-image.png",
+        url: `${BASE_URL}/og-image.png`,
         width: 1200,
         height: 630,
         alt: "EmailDiag - Email Deliverability Checker",
@@ -36,12 +37,12 @@ export const metadata: Metadata = {
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "EmailDiag - Email Deliverability Checker",
+    title: "EmailDiag - Free Email Deliverability Checker",
     description: "Free email deliverability test. Check SPF, DKIM, DMARC and get fix suggestions.",
-    images: ["/og-image.png"],
+    images: [`${BASE_URL}/og-image.png`],
   },
   
-  // 其他 SEO 设置
+  // SEO
   robots: {
     index: true,
     follow: true,
@@ -54,19 +55,18 @@ export const metadata: Metadata = {
     },
   },
   
-  // 验证标签（后续可以添加 Google Search Console 等）
+  // Verification
   verification: {
     // google: "your-google-verification-code",
-    // yandex: "your-yandex-verification-code",
   },
   
-  // 其他元数据
+  // Canonical
   alternates: {
     canonical: BASE_URL,
   },
 };
 
-// JSON-LD 结构化数据
+// JSON-LD - 移除虚假的 aggregateRating
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -80,11 +80,7 @@ const jsonLd = {
     price: "0",
     priceCurrency: "USD",
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    ratingCount: "150",
-  },
+  // aggregateRating 已移除 - 等有真实用户评价后再添加
 };
 
 export default function RootLayout({
