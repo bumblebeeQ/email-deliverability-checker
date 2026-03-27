@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Email Deliverability FAQ - Common Questions Answered',
     description: 'Get answers to frequently asked questions about email deliverability, SPF, DKIM, DMARC configuration.',
-    url: 'https://EmailDiag.xyz/faq',
+    url: 'https://www.emaildiag.com/faq',
   },
   alternates: {
-    canonical: 'https://EmailDiag.xyz/faq',
+    canonical: 'https://www.emaildiag.com/faq',
   },
 };
 

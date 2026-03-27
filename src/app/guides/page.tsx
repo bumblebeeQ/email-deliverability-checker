@@ -8,6 +8,15 @@ export const metadata: Metadata = {
   title: 'Email Authentication Guides - SPF, DKIM, DMARC Setup | EmailDiag',
   description: 'Step-by-step guides to configure SPF, DKIM, and DMARC for Cloudflare, GoDaddy, Aliyun, DNSPod, and AWS Route 53. Fix email deliverability issues.',
   keywords: 'SPF setup, DKIM configuration, DMARC guide, email authentication, DNS setup, Cloudflare SPF, GoDaddy DKIM',
+  openGraph: {
+    title: 'Email Authentication Guides - SPF, DKIM, DMARC Setup',
+    description: 'Step-by-step guides to configure SPF, DKIM, and DMARC for major DNS providers.',
+    url: 'https://www.emaildiag.com/guides',
+    type: 'website',
+  },
+  alternates: {
+    canonical: 'https://www.emaildiag.com/guides',
+  },
 };
 
 const RECORD_TYPES = [
