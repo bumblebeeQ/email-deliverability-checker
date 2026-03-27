@@ -66,8 +66,8 @@ export default function DMARCCheckerPage() {
       const response = await fetch(`/api/check?domain=${encodeURIComponent(cleanDomain)}`);
       const data = await response.json();
       
-      if (data.success && data.result?.dmarc) {
-        setResult(data.result.dmarc);
+      if (data.success && data.data?.checks?.dmarc) {
+        setResult(data.data.checks.dmarc);
       } else {
         setError('Failed to check DMARC record. Please try again.');
       }

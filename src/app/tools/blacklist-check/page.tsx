@@ -62,8 +62,16 @@ export default function BlacklistCheckPage() {
       const response = await fetch(`/api/check?domain=${encodeURIComponent(cleanDomain)}`);
       const data = await response.json();
       
-      if (data.success && data.result?.blacklist) {
-        setResult(data.result.blacklist);
+      if (data.success && data.data?.checks?.blacklist) {
+        const bl = data.data.checks.blacklist;
+        setResult({
+          totalChecked: bl.checked || 0,
+          listedOn: bl.listed || [],
+          cleanOn: [], // API doesn't return clean list, only count
+          status: bl.status,
+          issues: bl.issues || [],
+          suggestions: bl.suggestions || [],
+        });
       } else {
         setError('Failed to check blacklists. Please try again.');
       }

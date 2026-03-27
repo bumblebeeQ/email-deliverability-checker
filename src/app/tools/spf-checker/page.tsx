@@ -64,8 +64,8 @@ export default function SPFCheckerPage() {
       const response = await fetch(`/api/check?domain=${encodeURIComponent(cleanDomain)}`);
       const data = await response.json();
       
-      if (data.success && data.result?.spf) {
-        setResult(data.result.spf);
+      if (data.success && data.data?.checks?.spf) {
+        setResult(data.data.checks.spf);
       } else {
         setError('Failed to check SPF record. Please try again.');
       }

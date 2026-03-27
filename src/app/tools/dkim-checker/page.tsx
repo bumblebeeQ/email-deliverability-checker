@@ -62,8 +62,8 @@ export default function DKIMCheckerPage() {
       const response = await fetch(`/api/check?domain=${encodeURIComponent(cleanDomain)}`);
       const data = await response.json();
       
-      if (data.success && data.result?.dkim) {
-        setResult(data.result.dkim);
+      if (data.success && data.data?.checks?.dkim) {
+        setResult(data.data.checks.dkim);
       } else {
         setError('Failed to check DKIM record. Please try again.');
       }
