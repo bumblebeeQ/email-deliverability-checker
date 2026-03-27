@@ -7,6 +7,7 @@ const BASE_URL = 'https://www.emaildiag.com';
 // Blog posts - keep in sync with blog page
 const blogPosts = [
   { slug: 'why-emails-going-to-spam', date: '2026-03-27' },
+  { slug: 'spf-dkim-set-but-not-found', date: '2026-03-27' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

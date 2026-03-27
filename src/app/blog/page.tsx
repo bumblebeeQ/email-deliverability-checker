@@ -25,13 +25,23 @@ const blogPosts = [
     title: 'Why Are My Emails Going to Spam? (2026 Complete Guide)',
     description: 'Discover the 12 most common reasons your emails land in spam and learn exactly how to fix each one. Complete guide with step-by-step solutions.',
     date: '2026-03-27',
-    author: 'EmailDiag Team',
+    author: 'Mike Chen',
     category: 'Email Deliverability',
     tags: ['spam', 'email deliverability', 'SPF', 'DKIM', 'DMARC'],
-    readingTime: '15 min read',
+    readingTime: '12 min read',
     featured: true,
   },
-  // More posts will be added here
+  {
+    slug: 'spf-dkim-set-but-not-found',
+    title: 'SPF and DKIM Set But "Record Not Found"? Here\'s the Fix',
+    description: 'Configured SPF and DKIM but still getting "record not found" errors? I spent 2 hours debugging this exact issue. Here\'s what actually worked.',
+    date: '2026-03-27',
+    author: 'Mike Chen',
+    category: 'Troubleshooting',
+    tags: ['SPF', 'DKIM', 'DNS', 'troubleshooting'],
+    readingTime: '8 min read',
+    featured: false,
+  },
 ];
 
 export default function BlogPage() {
