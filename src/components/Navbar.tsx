@@ -7,7 +7,7 @@ import { Mail, Zap, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   // Optional: highlight a specific nav item
-  active?: 'home' | 'tools' | 'guides' | 'test' | 'faq';
+  active?: 'home' | 'tools' | 'guides' | 'blog' | 'test' | 'faq';
 }
 
 export function Navbar({ active }: NavbarProps) {
@@ -19,6 +19,7 @@ export function Navbar({ active }: NavbarProps) {
     if (pathname === '/') return 'home';
     if (pathname.startsWith('/tools')) return 'tools';
     if (pathname.startsWith('/guides')) return 'guides';
+    if (pathname.startsWith('/blog')) return 'blog';
     if (pathname.startsWith('/test')) return 'test';
     if (pathname === '/faq') return 'faq';
     return undefined;
@@ -28,8 +29,8 @@ export function Navbar({ active }: NavbarProps) {
     { href: '/', label: 'Home', key: 'home' },
     { href: '/tools', label: 'Tools', key: 'tools' },
     { href: '/guides', label: 'Guides', key: 'guides' },
+    { href: '/blog', label: 'Blog', key: 'blog' },
     { href: '/test', label: 'Email Test', key: 'test' },
-    { href: '/faq', label: 'FAQ', key: 'faq' },
   ];
 
   return (

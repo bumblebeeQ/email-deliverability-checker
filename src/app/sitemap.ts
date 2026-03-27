@@ -4,6 +4,11 @@ import { getAllProviders } from '@/lib/fix-guides';
 // 统一使用 www 版本
 const BASE_URL = 'https://www.emaildiag.com';
 
+// Blog posts - keep in sync with blog page
+const blogPosts = [
+  { slug: 'why-emails-going-to-spam', date: '2026-03-27' },
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const providers = getAllProviders();
   const recordTypes = ['spf', 'dkim', 'dmarc'];
@@ -15,6 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
+    },
+    {
+      url: `${BASE_URL}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.9,
     },
     {
       url: `${BASE_URL}/tools`,
@@ -84,6 +95,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Blog posts
+  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${BASE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   // DNS provider pages
   const providerPages: MetadataRoute.Sitemap = providers.map((provider) => ({
     url: `${BASE_URL}/guides/${provider.id}`,
@@ -105,5 +124,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  return [...staticPages, ...providerPages, ...guidePages];
+  return [...staticPages, ...blogPages, ...providerPages, ...guidePages];
 }
