@@ -1,0 +1,201 @@
+# EmailDiag 博客内容管理配置
+
+## 敏感词库
+
+### 绝对禁止 (任何上下文都不允许)
+
+```yaml
+illegal_content:
+  - 黑客攻击方法
+  - 绕过安全措施
+  - 伪造邮件教程
+  - 钓鱼邮件制作
+  - 垃圾邮件发送技巧
+  - 购买邮件列表推荐
+  - 任何违法行为指导
+
+discriminatory:
+  - 种族歧视用语
+  - 性别歧视用语
+  - 宗教攻击
+  - 政治敏感内容
+
+adult_violent:
+  - 色情内容
+  - 暴力内容
+  - 血腥描述
+```
+
+### 需要审核上下文
+
+```yaml
+marketing_claims:
+  - "guaranteed" / "保证" 
+    → 检查: 是否有依据，是否合理
+  - "best" / "最好" / "最佳"
+    → 检查: 是否有对比依据
+  - "100%" / "完全"
+    → 检查: 是否夸大
+  - "free" / "免费"
+    → 检查: 是否真的免费，有无隐藏条件
+  - "instant" / "立即"
+    → 检查: 是否真的即时
+
+competitor_mentions:
+  - 竞品名称
+    → 检查: 描述是否客观，是否有贬低
+  
+data_privacy:
+  - 邮箱地址
+    → 检查: 是否使用 example.com 等安全域名
+  - IP 地址
+    → 检查: 是否脱敏或使用示例 IP
+  - 用户名
+    → 检查: 是否是真实用户名
+```
+
+## 外链白名单
+
+### 可直接链接 (无需审核)
+
+```yaml
+official_docs:
+  - developers.google.com
+  - docs.microsoft.com
+  - support.google.com
+  - postmaster.google.com
+  - cloudflare.com/learning
+  - aws.amazon.com/documentation
+  - sendgrid.com/docs
+  - mailgun.com/docs
+
+standards:
+  - tools.ietf.org  # RFC 文档
+  - dmarc.org
+  - spf.org
+  - wikipedia.org
+
+authority:
+  - statista.com
+  - ftc.gov
+  - gdpr.eu
+```
+
+### 需要审核
+
+```yaml
+needs_review:
+  - 任何个人博客
+  - 非官方教程网站
+  - 论坛帖子
+  - 社交媒体链接
+  - 任何非 HTTPS 链接
+```
+
+### 禁止链接
+
+```yaml
+blocked:
+  - 任何短链接 (bit.ly, t.co, etc)
+  - 可疑域名
+  - 竞品的营销页面
+  - 付费推广链接 (除非明确标注)
+```
+
+## 图片来源审核
+
+### 允许的来源
+
+```yaml
+allowed_sources:
+  自有内容:
+    - EmailDiag 产品截图
+    - 自制图表 (Excalidraw, Figma, etc)
+    - 自制数据可视化
+  
+  公开截图 (合理使用):
+    - Gmail/Outlook 等产品界面
+    - DNS 提供商配置界面
+    - 开发者工具截图
+    - 公开的错误信息截图
+  
+  社区内容 (需标注来源):
+    - Reddit 帖子截图 (脱敏用户名)
+    - Stack Overflow 问题截图
+    - Twitter/X 公开帖子截图
+    - 注意: 必须是公开内容，必须脱敏个人信息
+  
+  免费图库:
+    - Unsplash (CC0)
+    - Pexels (CC0)
+    - Pixabay (CC0)
+    - 注意: 避免使用，我们的内容以截图和图表为主
+```
+
+### 禁止的来源
+
+```yaml
+blocked_sources:
+  - 未授权的版权图片
+  - 含水印的图片
+  - 包含真实人脸的非授权照片
+  - 竞品的 logo (除非是客观对比文章)
+  - AI 生成的人物照片 (容易被识别)
+```
+
+## 发布规则
+
+### 发布时间
+
+```yaml
+publishing:
+  # 避免机械化发布时间
+  preferred_hours: [9, 10, 11, 14, 15, 16]  # 工作时间
+  avoid_exact_times: true  # 不要每次都是 xx:00
+  randomize_minutes: true  # 随机分钟数
+  
+  # 避免固定节奏
+  min_gap_hours: 20  # 两篇文章至少间隔 20 小时
+  max_gap_days: 5    # 最多 5 天不发文章
+```
+
+### 内容多样性
+
+```yaml
+diversity:
+  # 不要连续发同类型文章
+  max_consecutive_same_type: 2
+  
+  # 作者轮换
+  alternate_authors: true
+  
+  # 文章长度变化
+  word_count_variance: 0.3  # ±30% 变化
+```
+
+## 质量检查点
+
+### 发布前自动检查
+
+```yaml
+pre_publish_checks:
+  - meta_complete: true        # 标题、描述、关键词完整
+  - images_optimized: true     # 图片已压缩
+  - links_valid: true          # 所有链接可访问
+  - code_tested: true          # 代码块语法正确
+  - no_blocked_words: true     # 无禁止词汇
+  - internal_links: >= 2       # 至少 2 个内部链接
+  - external_links: >= 1       # 至少 1 个外部权威链接
+  - cta_present: true          # 有明确的 CTA
+  - reading_time_accurate: true # 阅读时间准确
+```
+
+### 发布后监控
+
+```yaml
+post_publish_monitoring:
+  - page_accessible: true      # 页面可访问
+  - sitemap_updated: true      # sitemap 已更新
+  - mobile_friendly: true      # 移动端正常
+  - no_console_errors: true    # 无 JS 错误
+```
