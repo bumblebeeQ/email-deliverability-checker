@@ -8,6 +8,7 @@ import { getArticleBySlug, getAllSlugs, blogArticles } from '@/lib/blog-data';
 // Import article content components
 import WhyEmailsGoingToSpam from './content/why-emails-going-to-spam';
 import SpfDkimNotFound from './content/spf-dkim-set-but-not-found';
+import DmarcPolicyNotFound from './content/dmarc-policy-not-found';
 
 type Props = {
   params: { slug: string };
@@ -16,6 +17,7 @@ type Props = {
 const contentComponents: Record<string, React.ComponentType> = {
   'why-emails-going-to-spam': WhyEmailsGoingToSpam,
   'spf-dkim-set-but-not-found': SpfDkimNotFound,
+  'dmarc-policy-not-found': DmarcPolicyNotFound,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

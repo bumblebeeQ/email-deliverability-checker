@@ -39,6 +39,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-03-27',
     readingTime: '8 min read',
   },
+  {
+    slug: 'dmarc-policy-not-found',
+    title: '"DMARC Policy Not Found" Error? Here\'s the Complete Fix',
+    description: 'Keep seeing "DMARC policy not found" in your email headers? I\'ll show you exactly how to fix this in under 10 minutes. Step-by-step guide with copy-paste DNS records.',
+    keywords: 'DMARC policy not found, DMARC setup, DMARC record, DMARC error fix, email authentication, dmarc=none fix',
+    author: 'Mike Chen',
+    authorBio: 'Fixed this exact error for dozens of clients. It\'s easier than you think.',
+    category: 'Troubleshooting',
+    categoryColor: 'orange',
+    date: '2026-03-31',
+    readingTime: '10 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
