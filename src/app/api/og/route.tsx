@@ -147,7 +147,7 @@ export async function GET(request: NextRequest) {
             color: '#94a3b8',
           }}
         >
-          EmailDiag.xyz • Free Email Deliverability Checker
+          www.emaildiag.com • Free Email Deliverability Checker
         </div>
       </div>
     ),

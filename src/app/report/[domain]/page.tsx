@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const result = await checkDomain(extractDomain(domain));
   
+  const BASE_URL = 'https://www.emaildiag.com';
   const title = `${domain} Email Deliverability Report - Score: ${result.score}/100 (${result.grade})`;
   const description = `Email authentication check for ${domain}: SPF ${result.checks.spf.status}, DKIM ${result.checks.dkim.status}, DMARC ${result.checks.dmarc.status}. ${result.summary.passed} passed, ${result.summary.warnings} warnings, ${result.summary.issues} issues.`;
 
@@ -38,10 +39,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       type: 'website',
-      url: `https://EmailDiag.xyz/report/${domain}`,
+      url: `${BASE_URL}/report/${domain}`,
       siteName: 'EmailDiag',
       images: [{
-        url: `https://EmailDiag.xyz/api/og?domain=${domain}&score=${result.score}&grade=${result.grade}`,
+        url: `${BASE_URL}/api/og?domain=${domain}&score=${result.score}&grade=${result.grade}`,
         width: 1200,
         height: 630,
         alt: `${domain} Email Score: ${result.grade}`,
@@ -51,10 +52,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title,
       description,
-      images: [`https://EmailDiag.xyz/api/og?domain=${domain}&score=${result.score}&grade=${result.grade}`],
+      images: [`${BASE_URL}/api/og?domain=${domain}&score=${result.score}&grade=${result.grade}`],
     },
     alternates: {
-      canonical: `https://EmailDiag.xyz/report/${domain}`,
+      canonical: `${BASE_URL}/report/${domain}`,
     },
     robots: {
       index: true,
@@ -74,12 +75,12 @@ function generateJsonLd(result: DomainCheckResult) {
     author: {
       '@type': 'Organization',
       name: 'EmailDiag',
-      url: 'https://EmailDiag.xyz',
+      url: 'https://www.emaildiag.com',
     },
     publisher: {
       '@type': 'Organization',
       name: 'EmailDiag',
-      url: 'https://EmailDiag.xyz',
+      url: 'https://www.emaildiag.com',
     },
     mainEntity: {
       '@type': 'WebApplication',
@@ -129,7 +130,7 @@ export default async function ReportPage({ params }: PageProps) {
     }
   };
 
-  const reportUrl = `https://EmailDiag.xyz/report/${domain}`;
+  const reportUrl = `https://www.emaildiag.com/report/${domain}`;
 
   return (
     <>
