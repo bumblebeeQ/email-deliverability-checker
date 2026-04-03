@@ -51,6 +51,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-03-31',
     readingTime: '10 min read',
   },
+  {
+    slug: 'spf-lookup-limit-exceeded',
+    title: '"SPF Lookup Limit Exceeded" Error? Here\'s How I Fixed It',
+    description: 'Getting the dreaded "SPF lookup limit exceeded (10/10)" error? I\'ll show you exactly how to flatten your SPF record and get back under the 10-lookup limit. Real fix, tested on 20+ domains.',
+    keywords: 'SPF lookup limit exceeded, SPF too many lookups, SPF 10 lookup limit, SPF flatten, SPF record fix, SPF permerror',
+    author: 'Mike Chen',
+    authorBio: 'Spent way too many hours counting SPF lookups. Now I automate it.',
+    category: 'Troubleshooting',
+    categoryColor: 'orange',
+    date: '2026-04-03',
+    readingTime: '10 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
