@@ -10,6 +10,7 @@ import WhyEmailsGoingToSpam from './content/why-emails-going-to-spam';
 import SpfDkimNotFound from './content/spf-dkim-set-but-not-found';
 import DmarcPolicyNotFound from './content/dmarc-policy-not-found';
 import SpfLookupLimitExceeded from './content/spf-lookup-limit-exceeded';
+import DkimSignatureVerificationFailed from './content/dkim-signature-verification-failed';
 
 type Props = {
   params: { slug: string };
@@ -20,6 +21,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'spf-dkim-set-but-not-found': SpfDkimNotFound,
   'dmarc-policy-not-found': DmarcPolicyNotFound,
   'spf-lookup-limit-exceeded': SpfLookupLimitExceeded,
+  'dkim-signature-verification-failed': DkimSignatureVerificationFailed,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

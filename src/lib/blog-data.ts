@@ -63,6 +63,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-04-03',
     readingTime: '10 min read',
   },
+  {
+    slug: 'dkim-signature-verification-failed',
+    title: '"DKIM Signature Verification Failed"? Here\'s How to Fix It',
+    description: 'Seeing "dkim=fail" or "DKIM signature verification failed" in your email headers? I\'ll walk you through every cause and the exact fix for each one. Tested on real production domains.',
+    keywords: 'DKIM signature verification failed, dkim fail, DKIM not passing, DKIM body hash did not verify, DKIM key not found, email authentication fix',
+    author: 'Mike Chen',
+    authorBio: 'Debugged more DKIM failures than I can count. The fix is usually simpler than you think.',
+    category: 'Troubleshooting',
+    categoryColor: 'orange',
+    date: '2026-04-08',
+    readingTime: '11 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
