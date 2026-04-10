@@ -75,6 +75,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-04-08',
     readingTime: '11 min read',
   },
+  {
+    slug: 'aws-ses-email-going-to-spam',
+    title: 'AWS SES Email Going to Spam? Here\'s How I Fixed It',
+    description: 'All my SES transactional emails were landing in spam. After 3 hours of debugging, I found the fix. Here\'s the complete walkthrough — sandbox, authentication, dedicated IPs, and content fixes.',
+    keywords: 'aws ses email going to spam, aws ses spam, aws ses deliverability, ses emails landing in spam, ses sandbox, ses dkim, ses spf, ses dmarc',
+    author: 'Mike Chen',
+    authorBio: 'Moved 200K emails off SES spam folders. Still get nervous hitting Send.',
+    category: 'Troubleshooting',
+    categoryColor: 'orange',
+    date: '2026-04-10',
+    readingTime: '10 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
