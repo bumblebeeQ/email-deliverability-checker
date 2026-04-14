@@ -87,6 +87,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-04-10',
     readingTime: '10 min read',
   },
+  {
+    slug: 'sendgrid-spf-setup-guide',
+    title: 'SendGrid SPF Setup Guide: How I Got It Working in 5 Minutes',
+    description: 'Struggling with SendGrid SPF configuration? I spent way too long figuring this out. Here\'s the exact DNS record you need and the mistakes to avoid.',
+    keywords: 'sendgrid spf setup, sendgrid spf record, sendgrid email authentication, sendgrid dns setup, sendgrid spf include, sendgrid deliverability',
+    author: 'Mike Chen',
+    authorBio: 'Set up SendGrid for more domains than I can count. Still double-check the include value every time.',
+    category: 'Setup Guide',
+    categoryColor: 'blue',
+    date: '2026-04-14',
+    readingTime: '9 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
