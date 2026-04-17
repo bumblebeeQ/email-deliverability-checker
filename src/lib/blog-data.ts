@@ -99,6 +99,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-04-14',
     readingTime: '9 min read',
   },
+  {
+    slug: 'mailgun-dkim-configuration',
+    title: 'Mailgun DKIM Configuration: The Complete Setup Guide (That Actually Works)',
+    description: 'Struggling with Mailgun DKIM setup? After 40+ domain configurations, I\'ve got it down to 10 minutes. Here\'s the exact DNS records you need and the mistakes that cost me hours.',
+    keywords: 'mailgun dkim configuration, mailgun dkim setup, mailgun email authentication, mailgun dns setup, mailgun domain verification, mailgun deliverability',
+    author: 'Mike Chen',
+    authorBio: 'Configured Mailgun DKIM for 40+ domains. Still remember the afternoon I wasted on my first try.',
+    category: 'Setup Guide',
+    categoryColor: 'blue',
+    date: '2026-04-17',
+    readingTime: '10 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

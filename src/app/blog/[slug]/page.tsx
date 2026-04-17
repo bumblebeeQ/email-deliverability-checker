@@ -13,6 +13,7 @@ import SpfLookupLimitExceeded from './content/spf-lookup-limit-exceeded';
 import DkimSignatureVerificationFailed from './content/dkim-signature-verification-failed';
 import AwsSesEmailGoingToSpam from './content/aws-ses-email-going-to-spam';
 import SendgridSpfSetupGuide from './content/sendgrid-spf-setup-guide';
+import MailgunDkimConfiguration from './content/mailgun-dkim-configuration';
 
 type Props = {
   params: { slug: string };
@@ -26,6 +27,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'dkim-signature-verification-failed': DkimSignatureVerificationFailed,
   'aws-ses-email-going-to-spam': AwsSesEmailGoingToSpam,
   'sendgrid-spf-setup-guide': SendgridSpfSetupGuide,
+  'mailgun-dkim-configuration': MailgunDkimConfiguration,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
