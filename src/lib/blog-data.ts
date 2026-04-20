@@ -111,6 +111,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-04-17',
     readingTime: '10 min read',
   },
+  {
+    slug: 'how-to-test-email-deliverability',
+    title: 'How to Test Email Deliverability (My Complete 6-Step Workflow)',
+    description: 'Think your emails are landing in inboxes? Here\'s how to actually verify it. My complete testing workflow — authentication checks, header analysis, blacklist monitoring, and ongoing testing habits.',
+    keywords: 'how to test email deliverability, email deliverability test, check email deliverability, email spam test, email authentication check, inbox placement test',
+    author: 'Mike Chen',
+    authorBio: 'Lost count of how many deliverability fires I\'ve put out. Testing regularly would\'ve prevented most of them.',
+    category: 'Email Deliverability',
+    categoryColor: 'red',
+    date: '2026-04-20',
+    readingTime: '11 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

@@ -14,6 +14,7 @@ import DkimSignatureVerificationFailed from './content/dkim-signature-verificati
 import AwsSesEmailGoingToSpam from './content/aws-ses-email-going-to-spam';
 import SendgridSpfSetupGuide from './content/sendgrid-spf-setup-guide';
 import MailgunDkimConfiguration from './content/mailgun-dkim-configuration';
+import HowToTestEmailDeliverability from './content/how-to-test-email-deliverability';
 
 type Props = {
   params: { slug: string };
@@ -28,6 +29,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'aws-ses-email-going-to-spam': AwsSesEmailGoingToSpam,
   'sendgrid-spf-setup-guide': SendgridSpfSetupGuide,
   'mailgun-dkim-configuration': MailgunDkimConfiguration,
+  'how-to-test-email-deliverability': HowToTestEmailDeliverability,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
