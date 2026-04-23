@@ -15,6 +15,7 @@ import AwsSesEmailGoingToSpam from './content/aws-ses-email-going-to-spam';
 import SendgridSpfSetupGuide from './content/sendgrid-spf-setup-guide';
 import MailgunDkimConfiguration from './content/mailgun-dkim-configuration';
 import HowToTestEmailDeliverability from './content/how-to-test-email-deliverability';
+import EmailAuthenticationBestPractices2026 from './content/email-authentication-best-practices-2026';
 
 type Props = {
   params: { slug: string };
@@ -30,6 +31,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'sendgrid-spf-setup-guide': SendgridSpfSetupGuide,
   'mailgun-dkim-configuration': MailgunDkimConfiguration,
   'how-to-test-email-deliverability': HowToTestEmailDeliverability,
+  'email-authentication-best-practices-2026': EmailAuthenticationBestPractices2026,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -123,6 +123,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-04-20',
     readingTime: '11 min read',
   },
+  {
+    slug: 'email-authentication-best-practices-2026',
+    title: 'Email Authentication Best Practices 2026: The Complete Guide',
+    description: 'Gmail, Yahoo, and Microsoft have raised the bar on email authentication. Here\'s what actually matters in 2026 — SPF, DKIM, DMARC setup, alignment traps, and the mistakes I still see every week.',
+    keywords: 'email authentication best practices 2026, email authentication guide, SPF DKIM DMARC best practices, email security 2026, DMARC reject policy, email deliverability authentication',
+    author: 'Mike Chen',
+    authorBio: 'Fixed email authentication for dozens of domains. The basics haven\'t changed — but the bar keeps rising.',
+    category: 'Email Deliverability',
+    categoryColor: 'red',
+    date: '2026-04-23',
+    readingTime: '12 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
