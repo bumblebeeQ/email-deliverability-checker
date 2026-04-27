@@ -135,6 +135,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-04-23',
     readingTime: '12 min read',
   },
+  {
+    slug: 'spf-vs-dkim-vs-dmarc',
+    title: 'SPF vs DKIM vs DMARC: What\'s the Difference? (Plain English Guide)',
+    description: 'Confused by SPF, DKIM, and DMARC? They\'re not the same thing. Here\'s what each one actually does, how they work together, and the exact order to set them up. No jargon, real examples.',
+    keywords: 'spf vs dkim vs dmarc, spf dkim dmarc difference, email authentication explained, spf vs dkim, dkim vs dmarc, email security comparison, spf dkim dmarc setup order',
+    author: 'Mike Chen',
+    authorBio: 'Explained this difference to probably 100 people at this point. The analogy finally clicks every time.',
+    category: 'Email Deliverability',
+    categoryColor: 'red',
+    date: '2026-04-27',
+    readingTime: '11 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
