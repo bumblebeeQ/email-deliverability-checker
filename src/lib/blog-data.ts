@@ -147,6 +147,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-04-27',
     readingTime: '11 min read',
   },
+  {
+    slug: 'fix-spf-record-cloudflare',
+    title: 'How to Fix SPF Record on Cloudflare (Step-by-Step, No Guesswork)',
+    description: 'SPF failing on Cloudflare? I\'ve fixed this exact issue dozens of times. Here\'s the step-by-step — correct record format, Cloudflare-specific gotchas, proxy mode explained, and the 5 mistakes I keep seeing.',
+    keywords: 'fix spf record cloudflare, cloudflare spf setup, cloudflare spf not working, spf record cloudflare dns, how to add spf record cloudflare, cloudflare email authentication',
+    author: 'Mike Chen',
+    authorBio: 'Fixed SPF on Cloudflare more times than I can count. The mistakes are always the same.',
+    category: 'Setup Guide',
+    categoryColor: 'blue',
+    date: '2026-05-14',
+    readingTime: '10 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

@@ -17,6 +17,7 @@ import MailgunDkimConfiguration from './content/mailgun-dkim-configuration';
 import HowToTestEmailDeliverability from './content/how-to-test-email-deliverability';
 import EmailAuthenticationBestPractices2026 from './content/email-authentication-best-practices-2026';
 import SpfVsDkimVsDmarc from './content/spf-vs-dkim-vs-dmarc';
+import FixSpfRecordCloudflare from './content/fix-spf-record-cloudflare';
 
 type Props = {
   params: { slug: string };
@@ -34,6 +35,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'how-to-test-email-deliverability': HowToTestEmailDeliverability,
   'email-authentication-best-practices-2026': EmailAuthenticationBestPractices2026,
   'spf-vs-dkim-vs-dmarc': SpfVsDkimVsDmarc,
+  'fix-spf-record-cloudflare': FixSpfRecordCloudflare,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
