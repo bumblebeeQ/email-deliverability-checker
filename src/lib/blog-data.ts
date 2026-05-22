@@ -159,6 +159,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-05-14',
     readingTime: '10 min read',
   },
+  {
+    slug: 'setup-dkim-aws-ses',
+    title: 'How to Setup DKIM on AWS SES (Step-by-Step, Actually Works)',
+    description: 'Struggling with DKIM configuration on AWS SES? I set this up on 30+ domains and still check the docs every time. Here\'s the exact process — identity verification, DNS records, and the gotchas nobody mentions.',
+    keywords: 'how to setup dkim aws ses, aws ses dkim configuration, ses dkim dns records, aws ses email authentication, ses domain verification dkim',
+    author: 'Mike Chen',
+    authorBio: 'Set up DKIM on more SES domains than I can count. Still double-check the CNAME values every time.',
+    category: 'Setup Guide',
+    categoryColor: 'blue',
+    date: '2026-05-22',
+    readingTime: '9 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
