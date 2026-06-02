@@ -171,6 +171,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-05-22',
     readingTime: '9 min read',
   },
+  {
+    slug: 'improve-email-sender-reputation',
+    title: 'How to Improve Email Sender Reputation (6-Step Recovery Playbook)',
+    description: 'Emails landing in spam? Your sender reputation is probably shot. Here\'s the exact 6-step playbook I used to take a client from 40% inbox placement back to 95% — authentication, list hygiene, sending patterns, and the recovery timeline nobody talks about.',
+    keywords: 'how to improve email sender reputation, email sender reputation, email reputation fix, improve email deliverability, sender score, gmail reputation, email inbox placement',
+    author: 'Mike Chen',
+    authorBio: 'Recovered sender reputation for dozens of domains. The fix is always the same — patience and clean data.',
+    category: 'Email Deliverability',
+    categoryColor: 'red',
+    date: '2026-06-02',
+    readingTime: '12 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

@@ -18,6 +18,8 @@ import HowToTestEmailDeliverability from './content/how-to-test-email-deliverabi
 import EmailAuthenticationBestPractices2026 from './content/email-authentication-best-practices-2026';
 import SpfVsDkimVsDmarc from './content/spf-vs-dkim-vs-dmarc';
 import FixSpfRecordCloudflare from './content/fix-spf-record-cloudflare';
+import SetupDkimAwsSes from './content/setup-dkim-aws-ses';
+import ImproveEmailSenderReputation from './content/improve-email-sender-reputation';
 
 type Props = {
   params: { slug: string };
@@ -36,6 +38,8 @@ const contentComponents: Record<string, React.ComponentType> = {
   'email-authentication-best-practices-2026': EmailAuthenticationBestPractices2026,
   'spf-vs-dkim-vs-dmarc': SpfVsDkimVsDmarc,
   'fix-spf-record-cloudflare': FixSpfRecordCloudflare,
+  'setup-dkim-aws-ses': SetupDkimAwsSes,
+  'improve-email-sender-reputation': ImproveEmailSenderReputation,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
