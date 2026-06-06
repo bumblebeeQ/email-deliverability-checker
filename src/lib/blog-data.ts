@@ -183,6 +183,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-06-02',
     readingTime: '12 min read',
   },
+  {
+    slug: 'spf-soft-fail-vs-hard-fail',
+    title: 'SPF Soft Fail vs Hard Fail: Which Should You Use? (Real-World Guide)',
+    description: 'Confused by ~all vs -all in your SPF record? One character difference, massive consequences. Here\'s exactly what each one does, when to use which, and how to safely migrate — from someone who learned the hard way.',
+    keywords: 'spf soft fail vs hard fail, spf ~all vs -all, spf all mechanism, soft fail spf, hard fail spf, spf record all, spf fail types explained',
+    author: 'Mike Chen',
+    authorBio: 'Watched one client lose 2,000 emails over a single character. Now I always double-check the all mechanism.',
+    category: 'Email Deliverability',
+    categoryColor: 'red',
+    date: '2026-06-06',
+    readingTime: '11 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

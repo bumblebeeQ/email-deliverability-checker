@@ -20,6 +20,7 @@ import SpfVsDkimVsDmarc from './content/spf-vs-dkim-vs-dmarc';
 import FixSpfRecordCloudflare from './content/fix-spf-record-cloudflare';
 import SetupDkimAwsSes from './content/setup-dkim-aws-ses';
 import ImproveEmailSenderReputation from './content/improve-email-sender-reputation';
+import SpfSoftFailVsHardFail from './content/spf-soft-fail-vs-hard-fail';
 
 type Props = {
   params: { slug: string };
@@ -40,6 +41,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'fix-spf-record-cloudflare': FixSpfRecordCloudflare,
   'setup-dkim-aws-ses': SetupDkimAwsSes,
   'improve-email-sender-reputation': ImproveEmailSenderReputation,
+  'spf-soft-fail-vs-hard-fail': SpfSoftFailVsHardFail,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
