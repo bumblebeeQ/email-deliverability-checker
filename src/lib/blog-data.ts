@@ -195,6 +195,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-06-06',
     readingTime: '11 min read',
   },
+  {
+    slug: 'best-email-spam-checker-free',
+    title: 'Best Email Spam Checker Free: 6 Tools I Actually Tested (2026)',
+    description: 'I tested 6 free email spam checkers on the same broken domain. Here\'s which ones caught real issues and which ones are a waste of time.',
+    keywords: 'best email spam checker free, free email spam test, email spam score checker, email deliverability test tool, spam checker tool, email spam tester free',
+    author: 'Mike Chen',
+    authorBio: 'Spent an entire afternoon testing spam checkers so you don\'t have to. You\'re welcome.',
+    category: 'Tools & Reviews',
+    categoryColor: 'green',
+    date: '2026-06-22',
+    readingTime: '10 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
