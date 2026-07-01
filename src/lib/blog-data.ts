@@ -207,6 +207,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-06-22',
     readingTime: '10 min read',
   },
+  {
+    slug: 'office-365-spf-record-example',
+    title: 'Office 365 SPF Record Example: The Exact Setup That Works',
+    description: 'Migrating to Microsoft 365 and your emails are bouncing? Here\'s the exact SPF record example, where to add it, hybrid setups with other senders, and the 5 mistakes that break it every time.',
+    keywords: 'office 365 spf record example, microsoft 365 spf setup, spf.protection.outlook.com, office 365 spf record, m365 spf configuration, exchange online spf',
+    author: 'Mike Chen',
+    authorBio: 'Migrated more domains to Microsoft 365 than I can count. The old SPF record is always still hiding somewhere.',
+    category: 'Setup Guide',
+    categoryColor: 'blue',
+    date: '2026-07-01',
+    readingTime: '9 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
