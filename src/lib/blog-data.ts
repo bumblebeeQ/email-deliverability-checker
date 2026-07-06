@@ -219,6 +219,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-07-01',
     readingTime: '9 min read',
   },
+  {
+    slug: 'transactional-email-going-to-spam',
+    title: 'Transactional Email Going to Spam? Here\'s Why (And How to Fix It)',
+    description: 'Password resets, receipts, and OTP codes landing in spam even though users requested them? Here\'s why transactional email fails differently than marketing email, and the exact fixes that work.',
+    keywords: 'transactional email going to spam, password reset email spam, otp email spam, transactional email deliverability, receipt email spam folder, noreply email spam',
+    author: 'Mike Chen',
+    authorBio: 'Fixed transactional deliverability for SaaS apps of every size. It\'s never the reason people expect.',
+    category: 'Email Deliverability',
+    categoryColor: 'red',
+    date: '2026-07-06',
+    readingTime: '10 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

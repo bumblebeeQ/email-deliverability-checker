@@ -23,6 +23,7 @@ import ImproveEmailSenderReputation from './content/improve-email-sender-reputat
 import SpfSoftFailVsHardFail from './content/spf-soft-fail-vs-hard-fail';
 import BestEmailSpamCheckerFree from './content/best-email-spam-checker-free';
 import Office365SpfRecordExample from './content/office-365-spf-record-example';
+import TransactionalEmailGoingToSpam from './content/transactional-email-going-to-spam';
 
 type Props = {
   params: { slug: string };
@@ -46,6 +47,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'spf-soft-fail-vs-hard-fail': SpfSoftFailVsHardFail,
   'best-email-spam-checker-free': BestEmailSpamCheckerFree,
   'office-365-spf-record-example': Office365SpfRecordExample,
+  'transactional-email-going-to-spam': TransactionalEmailGoingToSpam,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
