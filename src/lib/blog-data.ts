@@ -231,6 +231,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-07-06',
     readingTime: '10 min read',
   },
+  {
+    slug: 'dmarc-quarantine-vs-reject',
+    title: 'DMARC Quarantine vs Reject: Which Policy Should You Use?',
+    description: 'Ready to enforce DMARC but not sure whether to use p=quarantine or p=reject? Here\'s exactly what each policy does, the risks of jumping too fast, and a safe migration path from one to the other.',
+    keywords: 'dmarc quarantine vs reject, dmarc policy comparison, p=quarantine vs p=reject, dmarc enforcement, dmarc policy recommendation, how to move to dmarc reject',
+    author: 'Mike Chen',
+    authorBio: 'Migrated dozens of domains from quarantine to reject. The rushed ones are always the ones that break.',
+    category: 'Email Deliverability',
+    categoryColor: 'red',
+    date: '2026-07-09',
+    readingTime: '11 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
