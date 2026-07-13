@@ -243,6 +243,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-07-09',
     readingTime: '11 min read',
   },
+  {
+    slug: 'cold-email-deliverability-tips',
+    title: 'Cold Email Deliverability Tips: What Actually Keeps You Out of Spam',
+    description: 'Cold outreach plays by different rules than regular email. Here\'s why, and the exact infrastructure, warm-up, and pacing tips that keep cold email out of spam without burning your domain.',
+    keywords: 'cold email deliverability tips, cold email spam, cold outreach deliverability, cold email domain warm up, cold email best practices, sales outreach spam folder',
+    author: 'Mike Chen',
+    authorBio: 'Helped outbound teams set up dozens of outreach domains. The infrastructure matters more than the copy.',
+    category: 'Email Deliverability',
+    categoryColor: 'red',
+    date: '2026-07-13',
+    readingTime: '11 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
