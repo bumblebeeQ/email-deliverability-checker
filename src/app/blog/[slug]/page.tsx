@@ -26,6 +26,7 @@ import Office365SpfRecordExample from './content/office-365-spf-record-example';
 import TransactionalEmailGoingToSpam from './content/transactional-email-going-to-spam';
 import DmarcQuarantineVsReject from './content/dmarc-quarantine-vs-reject';
 import ColdEmailDeliverabilityTips from './content/cold-email-deliverability-tips';
+import PostfixDmarcSetupUbuntu from './content/postfix-dmarc-setup-ubuntu';
 
 type Props = {
   params: { slug: string };
@@ -52,6 +53,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'transactional-email-going-to-spam': TransactionalEmailGoingToSpam,
   'dmarc-quarantine-vs-reject': DmarcQuarantineVsReject,
   'cold-email-deliverability-tips': ColdEmailDeliverabilityTips,
+  'postfix-dmarc-setup-ubuntu': PostfixDmarcSetupUbuntu,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

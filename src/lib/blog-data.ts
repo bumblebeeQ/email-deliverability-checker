@@ -255,6 +255,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-07-13',
     readingTime: '11 min read',
   },
+  {
+    slug: 'postfix-dmarc-setup-ubuntu',
+    title: 'Postfix DMARC Setup on Ubuntu: The Complete Walkthrough',
+    description: 'Set up Postfix, added SPF, and DMARC still fails? Here\'s the full OpenDKIM + Postfix + SPF + DMARC stack on Ubuntu, plus the three misconfigurations that cause silent DMARC failures.',
+    keywords: 'postfix dmarc setup ubuntu, postfix opendkim setup, postfix dkim ubuntu, self hosted email dmarc, opendkim postfix configuration, postfix spf dkim dmarc',
+    author: 'Mike Chen',
+    authorBio: 'Rebuilt this exact Postfix + OpenDKIM + DMARC stack more times than I can count. The selector typo gets everyone at least once.',
+    category: 'Troubleshooting',
+    categoryColor: 'orange',
+    date: '2026-09-10',
+    readingTime: '10 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
