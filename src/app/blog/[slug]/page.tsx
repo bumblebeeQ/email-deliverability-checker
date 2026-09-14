@@ -27,6 +27,7 @@ import TransactionalEmailGoingToSpam from './content/transactional-email-going-t
 import DmarcQuarantineVsReject from './content/dmarc-quarantine-vs-reject';
 import ColdEmailDeliverabilityTips from './content/cold-email-deliverability-tips';
 import PostfixDmarcSetupUbuntu from './content/postfix-dmarc-setup-ubuntu';
+import DkimKeyLengthBestPractice from './content/dkim-key-length-best-practice';
 
 type Props = {
   params: { slug: string };
@@ -54,6 +55,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'dmarc-quarantine-vs-reject': DmarcQuarantineVsReject,
   'cold-email-deliverability-tips': ColdEmailDeliverabilityTips,
   'postfix-dmarc-setup-ubuntu': PostfixDmarcSetupUbuntu,
+  'dkim-key-length-best-practice': DkimKeyLengthBestPractice,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

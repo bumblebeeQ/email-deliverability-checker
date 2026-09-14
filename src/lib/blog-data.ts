@@ -267,6 +267,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-09-10',
     readingTime: '10 min read',
   },
+  {
+    slug: 'dkim-key-length-best-practice',
+    title: 'DKIM Key Length Best Practice: 1024 vs 2048 vs 4096-Bit',
+    description: '1024-bit is too weak, but 4096-bit can quietly break DKIM on some receivers. Here\'s why 2048-bit is the correct default, and how to rotate an old key safely without breaking mail flow.',
+    keywords: 'dkim key length best practice, dkim 1024 vs 2048, dkim 4096 bit, dkim key size recommendation, opendkim key length, rsa key length dkim',
+    author: 'Mike Chen',
+    authorBio: 'Regenerated more DKIM keys than I\'d like to admit after finding 1024-bit ones in production.',
+    category: 'Troubleshooting',
+    categoryColor: 'orange',
+    date: '2026-09-14',
+    readingTime: '9 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
