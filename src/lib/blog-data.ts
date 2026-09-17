@@ -279,6 +279,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-09-14',
     readingTime: '9 min read',
   },
+  {
+    slug: 'spf-record-for-multiple-mail-servers',
+    title: 'SPF Record for Multiple Mail Servers: The Right Way to Combine Them',
+    description: 'Sending from a self-hosted server, an ESP, and a CRM tool? You still only get one SPF record. Here\'s exactly how to combine multiple mail sources correctly without breaking deliverability.',
+    keywords: 'spf record for multiple mail servers, multiple spf records, combine spf records, spf record two mail servers, spf multiple sending sources, one spf record',
+    author: 'Mike Chen',
+    authorBio: 'Fixed this exact duplicate-SPF-record mistake for more clients than I can count.',
+    category: 'Troubleshooting',
+    categoryColor: 'orange',
+    date: '2026-09-17',
+    readingTime: '9 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
