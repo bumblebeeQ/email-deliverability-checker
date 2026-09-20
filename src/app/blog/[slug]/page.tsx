@@ -29,6 +29,7 @@ import ColdEmailDeliverabilityTips from './content/cold-email-deliverability-tip
 import PostfixDmarcSetupUbuntu from './content/postfix-dmarc-setup-ubuntu';
 import DkimKeyLengthBestPractice from './content/dkim-key-length-best-practice';
 import SpfRecordForMultipleMailServers from './content/spf-record-for-multiple-mail-servers';
+import SpfAndDkimPassButDmarcFails from './content/spf-and-dkim-pass-but-dmarc-fails';
 
 type Props = {
   params: { slug: string };
@@ -58,6 +59,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'postfix-dmarc-setup-ubuntu': PostfixDmarcSetupUbuntu,
   'dkim-key-length-best-practice': DkimKeyLengthBestPractice,
   'spf-record-for-multiple-mail-servers': SpfRecordForMultipleMailServers,
+  'spf-and-dkim-pass-but-dmarc-fails': SpfAndDkimPassButDmarcFails,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

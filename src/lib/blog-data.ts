@@ -291,6 +291,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-09-17',
     readingTime: '9 min read',
   },
+  {
+    slug: 'spf-and-dkim-pass-but-dmarc-fails',
+    title: 'SPF and DKIM Pass But DMARC Still Fails? Here\'s Why',
+    description: 'Both checks show green, yet your DMARC report says fail. This isn\'t a broken record — it\'s an alignment problem. Here\'s exactly what alignment means and how to fix the domain mismatch causing it.',
+    keywords: 'spf and dkim pass but dmarc fails, dmarc alignment failed, dmarc fails spf dkim pass, dmarc alignment explained, spf dkim dmarc alignment, dmarc relaxed vs strict',
+    author: 'Mike Chen',
+    authorBio: 'Lost an afternoon to this exact "but both checks pass!" confusion before finding the real cause.',
+    category: 'Troubleshooting',
+    categoryColor: 'orange',
+    date: '2026-09-20',
+    readingTime: '9 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
