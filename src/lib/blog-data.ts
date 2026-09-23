@@ -303,6 +303,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-09-20',
     readingTime: '9 min read',
   },
+  {
+    slug: 'emails-going-to-junk-despite-spf-dkim-dmarc-pass',
+    title: 'Emails Going to Junk Despite SPF, DKIM, and DMARC All Passing? Here\'s Why',
+    description: 'All three checks are green and it still lands in Junk. Authentication was never the whole story — here\'s the reputation and content layer that\'s actually deciding placement, and how Outlook\'s SCL score fits in.',
+    keywords: 'emails going to junk despite spf dkim dmarc pass, spf dkim dmarc pass still spam, email reputation vs authentication, outlook scl junk, why does authenticated email go to junk, email deliverability reputation',
+    author: 'Mike Chen',
+    authorBio: 'Spent a week convinced my DNS was broken before realizing it was reputation, not records.',
+    category: 'Troubleshooting',
+    categoryColor: 'orange',
+    date: '2026-09-23',
+    readingTime: '10 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
