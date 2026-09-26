@@ -31,6 +31,7 @@ import DkimKeyLengthBestPractice from './content/dkim-key-length-best-practice';
 import SpfRecordForMultipleMailServers from './content/spf-record-for-multiple-mail-servers';
 import SpfAndDkimPassButDmarcFails from './content/spf-and-dkim-pass-but-dmarc-fails';
 import EmailsGoingToJunkDespiteSpfDkimDmarcPass from './content/emails-going-to-junk-despite-spf-dkim-dmarc-pass';
+import DmarcAlignmentRelaxedVsStrictMode from './content/dmarc-alignment-relaxed-vs-strict-mode';
 
 type Props = {
   params: { slug: string };
@@ -62,6 +63,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'spf-record-for-multiple-mail-servers': SpfRecordForMultipleMailServers,
   'spf-and-dkim-pass-but-dmarc-fails': SpfAndDkimPassButDmarcFails,
   'emails-going-to-junk-despite-spf-dkim-dmarc-pass': EmailsGoingToJunkDespiteSpfDkimDmarcPass,
+  'dmarc-alignment-relaxed-vs-strict-mode': DmarcAlignmentRelaxedVsStrictMode,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

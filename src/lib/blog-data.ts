@@ -315,6 +315,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-09-23',
     readingTime: '10 min read',
   },
+  {
+    slug: 'dmarc-alignment-relaxed-vs-strict-mode',
+    title: 'DMARC Alignment: Relaxed vs. Strict Mode (Which Should You Use?)',
+    description: 'The aspf and adkim tags control how strictly DMARC compares domains — and picking the wrong one either breaks legitimate mail or leaves a spoofing gap open. Here\'s exactly what each mode allows and how to choose.',
+    keywords: 'dmarc alignment relaxed vs strict mode, aspf adkim tags, dmarc strict mode, dmarc relaxed mode, dmarc alignment explained, dmarc organizational domain',
+    author: 'Mike Chen',
+    authorBio: 'Broke a client\'s mail flow once by flipping to strict mode without checking every sending source first.',
+    category: 'Best Practices',
+    categoryColor: 'blue',
+    date: '2026-09-26',
+    readingTime: '9 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
