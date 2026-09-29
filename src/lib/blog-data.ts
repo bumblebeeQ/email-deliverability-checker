@@ -327,6 +327,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-09-26',
     readingTime: '9 min read',
   },
+  {
+    slug: 'google-postmaster-tools-domain-reputation-low-fix',
+    title: 'Google Postmaster Tools Shows "Low" Domain Reputation? Here\'s the Fix',
+    description: 'No warning, no email — just a reputation graph that dropped to Low. Here\'s how to actually diagnose which of five common causes triggered it, and the exact recovery process, not just "wait it out."',
+    keywords: 'google postmaster tools domain reputation low fix, postmaster tools reputation low, domain reputation gmail fix, fix low domain reputation, postmaster tools spam rate high, gmail domain reputation recovery',
+    author: 'Mike Chen',
+    authorBio: 'Watched a reputation graph flatline at Low for a week before I found the actual cause in my own send logs.',
+    category: 'Troubleshooting',
+    categoryColor: 'orange',
+    date: '2026-09-29',
+    readingTime: '10 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
