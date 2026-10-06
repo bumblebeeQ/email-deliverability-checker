@@ -339,6 +339,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-09-29',
     readingTime: '10 min read',
   },
+  {
+    slug: 'reverse-dns-ptr-record-mismatch-email-spam',
+    title: 'Reverse DNS (PTR) Record Mismatch Causing Email Spam/Bounces? Here\'s the Fix',
+    description: 'SPF, DKIM, and DMARC all pass, but your self-hosted mail still bounces or lands in spam. Reverse DNS predates all three authentication checks — here\'s what a PTR mismatch is and exactly how to fix it.',
+    keywords: 'reverse dns ptr record mismatch email spam, ptr record email, fix ptr record, reverse dns email bounce, fcrdns mismatch, ptr record mail server setup',
+    author: 'Mike Chen',
+    authorBio: 'Got bounced by a default cloud-provider PTR record once. Haven\'t forgotten to check it since.',
+    category: 'Troubleshooting',
+    categoryColor: 'orange',
+    date: '2026-10-06',
+    readingTime: '9 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
