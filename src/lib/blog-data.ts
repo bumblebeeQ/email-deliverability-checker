@@ -351,6 +351,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-10-06',
     readingTime: '9 min read',
   },
+  {
+    slug: 'klaviyo-dmarc-not-verified-domain-misaligned',
+    title: 'Klaviyo Shows "Verified" But DMARC Says Domain Misaligned? Here\'s Why',
+    description: 'Klaviyo\'s green checkmark and DMARC alignment check two completely different things. Here\'s what "Verified" actually confirms, why the shared-domain fallback trips up alignment, and the exact fix.',
+    keywords: 'klaviyo dmarc not verified domain misaligned, klaviyo dmarc alignment, klaviyo domain verified but dmarc fails, klaviyo email authentication, klaviyomail.com dmarc, klaviyo spf dkim setup',
+    author: 'Mike Chen',
+    authorBio: 'Walked a client through this exact "but it says Verified!" confusion more times than I can count.',
+    category: 'Troubleshooting',
+    categoryColor: 'orange',
+    date: '2026-10-09',
+    readingTime: '9 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
