@@ -35,6 +35,7 @@ import DmarcAlignmentRelaxedVsStrictMode from './content/dmarc-alignment-relaxed
 import GooglePostmasterToolsDomainReputationLowFix from './content/google-postmaster-tools-domain-reputation-low-fix';
 import ReverseDnsPtrRecordMismatchEmailSpam from './content/reverse-dns-ptr-record-mismatch-email-spam';
 import KlaviyoDmarcNotVerifiedDomainMisaligned from './content/klaviyo-dmarc-not-verified-domain-misaligned';
+import SharedVsDedicatedIpEmailSendingReputation from './content/shared-vs-dedicated-ip-email-sending-reputation';
 
 type Props = {
   params: { slug: string };
@@ -70,6 +71,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'google-postmaster-tools-domain-reputation-low-fix': GooglePostmasterToolsDomainReputationLowFix,
   'reverse-dns-ptr-record-mismatch-email-spam': ReverseDnsPtrRecordMismatchEmailSpam,
   'klaviyo-dmarc-not-verified-domain-misaligned': KlaviyoDmarcNotVerifiedDomainMisaligned,
+  'shared-vs-dedicated-ip-email-sending-reputation': SharedVsDedicatedIpEmailSendingReputation,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

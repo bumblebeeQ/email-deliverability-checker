@@ -363,6 +363,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-10-09',
     readingTime: '9 min read',
   },
+  {
+    slug: 'shared-vs-dedicated-ip-email-sending-reputation',
+    title: 'Shared vs. Dedicated IP for Email: Which Actually Protects Your Reputation?',
+    description: 'Your ESP sales rep wants you on dedicated. Here\'s the real volume threshold where dedicated IPs start making sense — and why going dedicated too early can hurt deliverability more than shared ever did.',
+    keywords: 'shared vs dedicated ip email sending reputation, dedicated ip email warmup, shared ip pool email reputation, when to use dedicated ip email, ip warmup email sending, email sending ip reputation',
+    author: 'Mike Chen',
+    authorBio: 'Watched a client switch to dedicated too early and get worse deliverability than shared. Lesson learned the hard way.',
+    category: 'Best Practices',
+    categoryColor: 'blue',
+    date: '2026-10-12',
+    readingTime: '9 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
