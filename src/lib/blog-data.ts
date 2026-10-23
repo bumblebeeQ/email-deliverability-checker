@@ -375,6 +375,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-10-12',
     readingTime: '9 min read',
   },
+  {
+    slug: 'email-warm-up-new-domain-schedule',
+    title: 'Email Warmup Schedule for a New Domain (Actual Day-by-Day Plan)',
+    description: 'A brand-new domain has zero sending history — blasting your full list on day one is the fastest way to land in spam. Here\'s the actual 4-week warmup schedule, who to send to first, and what metrics to watch.',
+    keywords: 'email warm up new domain schedule, domain warmup email, new sending domain warmup plan, ip warmup schedule, email warmup best practices, new domain email reputation',
+    author: 'Mike Chen',
+    authorBio: 'Run this exact warmup schedule for new client domains more times than I can count at this point.',
+    category: 'Best Practices',
+    categoryColor: 'blue',
+    date: '2026-10-23',
+    readingTime: '10 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
