@@ -387,6 +387,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-10-23',
     readingTime: '10 min read',
   },
+  {
+    slug: 'bimi-record-setup-guide-2026',
+    title: 'BIMI Record Setup Guide 2026 (Including the VMC Requirement Nobody Mentions)',
+    description: 'Getting your logo to show up in Gmail takes more than a DNS record — it needs enforced DMARC and, for Gmail specifically, a Verified Mark Certificate tied to a registered trademark. Here\'s the complete setup.',
+    keywords: 'bimi record setup guide 2026, bimi dns record, verified mark certificate vmc, bimi gmail logo, how to setup bimi, bimi dmarc requirement',
+    author: 'Mike Chen',
+    authorBio: 'Explained the VMC trademark requirement to more confused marketing teams than I expected to.',
+    category: 'Best Practices',
+    categoryColor: 'blue',
+    date: '2026-10-31',
+    readingTime: '10 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

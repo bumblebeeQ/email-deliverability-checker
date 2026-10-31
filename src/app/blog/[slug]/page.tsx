@@ -37,6 +37,7 @@ import ReverseDnsPtrRecordMismatchEmailSpam from './content/reverse-dns-ptr-reco
 import KlaviyoDmarcNotVerifiedDomainMisaligned from './content/klaviyo-dmarc-not-verified-domain-misaligned';
 import SharedVsDedicatedIpEmailSendingReputation from './content/shared-vs-dedicated-ip-email-sending-reputation';
 import EmailWarmUpNewDomainSchedule from './content/email-warm-up-new-domain-schedule';
+import BimiRecordSetupGuide2026 from './content/bimi-record-setup-guide-2026';
 
 type Props = {
   params: { slug: string };
@@ -74,6 +75,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'klaviyo-dmarc-not-verified-domain-misaligned': KlaviyoDmarcNotVerifiedDomainMisaligned,
   'shared-vs-dedicated-ip-email-sending-reputation': SharedVsDedicatedIpEmailSendingReputation,
   'email-warm-up-new-domain-schedule': EmailWarmUpNewDomainSchedule,
+  'bimi-record-setup-guide-2026': BimiRecordSetupGuide2026,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
