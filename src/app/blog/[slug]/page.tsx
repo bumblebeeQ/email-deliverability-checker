@@ -38,6 +38,7 @@ import KlaviyoDmarcNotVerifiedDomainMisaligned from './content/klaviyo-dmarc-not
 import SharedVsDedicatedIpEmailSendingReputation from './content/shared-vs-dedicated-ip-email-sending-reputation';
 import EmailWarmUpNewDomainSchedule from './content/email-warm-up-new-domain-schedule';
 import BimiRecordSetupGuide2026 from './content/bimi-record-setup-guide-2026';
+import MtaStsSetupGuideEmailSecurity from './content/mta-sts-setup-guide-email-security';
 
 type Props = {
   params: { slug: string };
@@ -76,6 +77,7 @@ const contentComponents: Record<string, React.ComponentType> = {
   'shared-vs-dedicated-ip-email-sending-reputation': SharedVsDedicatedIpEmailSendingReputation,
   'email-warm-up-new-domain-schedule': EmailWarmUpNewDomainSchedule,
   'bimi-record-setup-guide-2026': BimiRecordSetupGuide2026,
+  'mta-sts-setup-guide-email-security': MtaStsSetupGuideEmailSecurity,
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -399,6 +399,18 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-10-31',
     readingTime: '10 min read',
   },
+  {
+    slug: 'mta-sts-setup-guide-email-security',
+    title: 'MTA-STS Setup Guide: Protect Inbound Email From TLS Downgrade Attacks',
+    description: 'SPF, DKIM, and DMARC all verify outbound mail — none of them protect the connection delivering mail TO your domain. Here\'s what MTA-STS actually defends against and the complete DNS + policy file setup.',
+    keywords: 'mta-sts setup guide email security, mta-sts dns record, mta-sts policy file, tls-rpt setup, smtp starttls downgrade attack, email transport security',
+    author: 'Mike Chen',
+    authorBio: 'Explained the outbound vs. inbound distinction to a security auditor who thought DMARC already covered this.',
+    category: 'Best Practices',
+    categoryColor: 'blue',
+    date: '2026-11-03',
+    readingTime: '10 min read',
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
